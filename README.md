@@ -1,38 +1,37 @@
-# Project Starter
+<!-- https://support.squarespace.com/hc/en-us/articles/206543587-Markdown-cheat-sheet -->
 
-In this activity we will add the provided boilerplate to group project repos.
+# **<h1 style="color:blue;"> 🐶 PeTinder </h1>**
 
-## Instructions
+> "The human-animal bond is a mutually beneficial and dynamic **relationship** between people and animals that is influenced by behaviors essential to the health and wellbeing or both.
+> This includes, among other things, emotional, psycological and physical interactions of people, animals and enviroment"
 
-* Only one member of each group should complete this activity while the others watch.
+### Objective:
 
-* [ ] Copy the entire [Unsolved](Unsolved) folder to another location on your computers &mdash; wherever you would like your local copy of the group project to be.
+- 🐷 This application will target people that are searching for a pet.
+- 🐵 It will help users to find a pet base on matching que answers for a questionary.
+- 🐴 Our goal its reduce the numbers of animals on shelters.
+- 🐹 It will also provide an API with all availables pet on database.
 
-* [ ] Rename the copied "Unsolved" folder to the name of your project.
+### Authors:
 
-* [ ] Open the copied project folder's `package.json` file and change its `name` property to the name of your project.
+- [Adriano Alves](https://github.com/adliano)
+- [Jose Menis](https://github.com/josemenis)
+- [Karina Lowell](https://github.com/karilowell)
+- [Yousef Aldalaeen](https://github.com/Aldalaeen)
 
-* [ ] CD to the root of the copied project folder with your terminal and run the following commands:
+### Technology Used:
 
-  ```sh
-  git init
-  git add .
-  git commit -m "Initial commit"
-  ```
+- [Bootstrap](https://getbootstrap.com/)
+- [Nodejs](https://nodejs.org/en/)
+- [Expressjs](https://expressjs.com/)
+- [Mysql Database](https://www.mysql.com/)
+- [Knexjs](https://knexjs.org/)
+- [Heroku](https://www.heroku.com/)
+- [Multer](https://www.npmjs.com/package/multer)
 
-* [ ] Then copy the GitHub repo's remote SSH URL (the same URL you'd use to clone the repo).
+#UI
 
-* [ ] Run the following commands in your terminal, replacing <remote-url> with your GitHub repo's remote SSH URL.
-
-  ```sh
-  git remote add origin <remote-url>
-  git push origin master
-  ```
-
-* [ ] If completed successfully you should see all of the files uploaded to GitHub.
-
-* [ ] All other group members should now clone the repo.
-
-* [ ] Discuss as a group:
-
-  * How would you now add changes to this project?
+![Home Page](public/images/homePage.png "Home Page")
+![Add Page](public/images/addPage.png "Add page")
+![Questions Page](public/images/questionsPage.png "Questions Page")
+![About Page](public/images/aboutUsPage.png "About")
