@@ -7,10 +7,10 @@
 
 ### Objective:
 
-- This application will target people that are searching for a pet.
-- It will help users to find a pet base on matching que answers for a questionary.
-- Our goal its reduce the numbers of animals on shelters.
-- It will also provide an API with all availables pet on database.
+- 🐷 This application will target people that are searching for a pet.
+- 🐵 It will help users to find a pet base on matching que answers for a questionary.
+- 🐴 Our goal its reduce the numbers of animals on shelters.
+- 🐹 It will also provide an API with all availables pet on database.
 
 ### Authors:
 
