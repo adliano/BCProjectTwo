@@ -1,4 +1,5 @@
 // Get references to page elements
+/* eslint-disable no-undef */
 var exampleText = document.querySelector('#example-text')
 var exampleDescription = document.querySelector('#example-description')
 var submitBtn = document.querySelector('#submit')
@@ -6,11 +7,11 @@ var exampleList = document.querySelector('#example-list')
 
 // The API object contains methods for each kind of request we'll make
 class API {
-  constructor(someDefault = 'defaultVal') {
+  constructor (someDefault = 'defaultVal') {
     this.someDefault = someDefault
   }
 
-  saveExample(example) {
+  saveExample (example) {
     return fetch('api/examples', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -18,11 +19,11 @@ class API {
     })
   }
 
-  getExamples() {
+  getExamples () {
     return fetch('api/examples')
   }
 
-  deleteExample(id) {
+  deleteExample (id) {
     return fetch('api/examples/' + id, {
       method: 'DELETE'
     })
@@ -102,3 +103,5 @@ var handleDeleteBtnClick = function (event) {
 // Add event listeners to the submit and delete buttons
 submitBtn.addEventListener('click', handleFormSubmit)
 exampleList.addEventListener('click', handleDeleteBtnClick)
+
+/* eslint-enable no-undef */

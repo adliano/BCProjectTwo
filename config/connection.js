@@ -4,11 +4,11 @@
 // Dependencies
 
 /* eslint-disable  no-unused-vars */
-const mysql = require('mysql')
+// const mysql = require('mysql')
 /* eslint-enable  no-unused-vars */
 
 // Creates mySQL connection using Knex.js
-const Knex = require('knex')(require('../knexfile')[ENV])
+// const Knex = require('knex')(require('../knexfile')[ENV]) //TODO: fix ENV error
 
 // Exports the connection for other files to use
-module.exports = Knex
+// module.exports = Knex
