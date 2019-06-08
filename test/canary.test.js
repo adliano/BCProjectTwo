@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 var expect = require('chai').expect
 /* eslint-disable no-undef */
 describe('canary test', function () {
