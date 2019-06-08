@@ -1,15 +1,89 @@
+/*
 body {
     background-color: #8a00d4;
+    color: #000000;
+}
+
+h1 {
+    color: #ffc46b;
 }
 
 .bg-nav {
     background-color: #ffc46b;
 }
 
+.navbar-brand {
+    color: #8a00d4;
+}
+
+.btn {
+    background-color: #d527b7;
+    color: #ffc46b;
+}
+
 .list-group-item {
     line-height: 2.5;
 }
+*/
 
-.jumboStyle {
-    background-color: #ff82c3;
+/* body {
+    background-color: #0c99c1;
+    color: #000000;
 }
+
+.bg-nav {
+    background-color: #f30cd4;
+}
+
+.btn {
+    background-color: #fff78f;
+    color: #000000;
+}
+
+.list-group-item {
+    line-height: 2.5;
+} */
+
+/* body {
+    background-color: #7a08fa;
+    color: #000000;
+}
+
+h1 {
+    color: #f8ecfd;
+}
+
+.btn {
+    background-color: #a82ffc;
+    color: #f8ecfd;
+}
+
+.bg-nav {
+    background-color: #c264fe;
+}
+
+.list-group-item {
+    line-height: 2.5;
+} */
+
+/* body {
+    background-color: #7a08fa;
+    color: #000000;
+}
+
+h1 {
+    color: #f8ecfd;
+}
+
+.btn {
+    background-color: #a82ffc;
+    color: #f8ecfd;
+}
+
+.bg-nav {
+    background-color: #c264fe;
+}
+
+.list-group-item {
+    line-height: 2.5;
+} */
