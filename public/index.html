@@ -25,39 +25,67 @@
   <!-- ---------------- BODY --------------------- -->
   <!-- ------------------------------------------- -->
   <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand bg-nav navbar-dark bg-dark">
-      <!-- <nav class="navbar navbar-expand bg-nav"> -->
-      <div class="nav navbar-nav">
-        <a class="navbar-brand" href="#">
-          <img
-            src="./images/feather_purr.svg"
-            width="30"
-            height="30"
-            class="d-inline-block align-top"
-            alt=""
-          />
-          Petinder
-        </a>
+    <!-- * * * * HEADER * * * * -->
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+        <!-- Navbar LOGO -->
+        <img
+          src="./images/feather_purr.svg"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt=""
+        />
+        Petinder
+      </a>
+      <!-- Button used to show toggler button on small view -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#anchorTagsExpand"
+        aria-controls="anchorTagsExpand"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Whatever need to colapse most be placed inside container bellow -->
+      <div class="collapse navbar-collapse" id="anchorTagsExpand">
+        <!-- ul used to handle the links -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">about</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="portfolio.html">api</a>
+          </li>
+        </ul>
       </div>
+      <!-- END OF COLLAPSE -->
+      <!-- </div> -->
+      <!-- EDN OF CONTAINER -->
     </nav>
+    <!-- END OF HEADER -->
+
     <!-- ------- Container ------ -->
-    <div class="container">
+    <div class="container pt-4">
       <!-- img row -->
       <div class="row mt-3">
         <div class="mx-auto">
-          <img
-            src="http://placehold.it/150x150"
-            alt="Placeholder"
-            class="img-thumbnail"
-          />
+          <!-- Image -->
+          <img src="./images/ki85j78eT.png" alt="Placeholder" width="350px" />
         </div>
       </div>
       <!-- Text row -->
       <div class="row mt-3">
         <div class="mx-auto text-center mx-3">
           <h1>Laborum do ut fugiat irure sint in.</h1>
-          <p>
+          <p class="px-1">
             Occaecat elit aute elit eu cupidatat sit fugiat dolore enim. Aliqua
             laborum do duis ut Lorem nostrud id aliquip aliqua. Commodo fugiat
             ad esse ipsum consectetur ullamco incididunt magna nostrud quis.
@@ -85,11 +113,15 @@
       </div>
       <!-- Buttons row -->
       <div class="row my-5">
-        <div class="col-sm-6 text-center my-2">
-          <button type="button" class="btn btn-primary w-50">Find a Pet</button>
+        <div class="col-sm-6 text-center">
+          <button type="button" class="btn btn-primary w-50 my-1">
+            Find a Pet
+          </button>
         </div>
         <div class="col-sm-6 text-center my-2">
-          <button type="button" class="btn btn-primary w-50">Add a Pet</button>
+          <button type="button" class="btn btn-primary w-50 my-1">
+            Add a Pet
+          </button>
         </div>
       </div>
     </div>
@@ -97,14 +129,15 @@
     <!-- -------- Footer -------- -->
     <footer class="page-footer font-small blue fixed-bottom bg-light">
       <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">
+      <div class="footer-copyright text-center py-2">
         <a href="https://mdbootstrap.com/education/bootstrap/"> petinder.com</a>
       </div>
       <!-- :: End of Copyright :: -->
     </footer>
     <!-- :: End of Footer :: -->
 
-    <!-- Optional JavaScript -->
+    <!-- ***************************************** -->
+    <!-- ********** Optional JavaScript ********** -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
