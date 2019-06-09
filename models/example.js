@@ -6,6 +6,12 @@
 // =============================================================
 const knex = require('../config/connection')
 
+// []Rename examples to pets.js
+// []Test findAll(), if not working fix it
+// []implement the create() method to create a new record at the MySQL database
+// []create and implement findWhere() method to get a simple record from database
+// []create and implement update() to update a single record on database
+
 /**
  * Queries the Example database
  *
