@@ -4,7 +4,7 @@
 
 // Dependencies
 // =============================================================
-const knex = require('../config/connection.js')
+const knex = require('../config/connection')
 
 /**
  * Queries the Example database
@@ -12,7 +12,7 @@ const knex = require('../config/connection.js')
  * @class Example
  */
 class Example {
-  constructor (table = 'example') {
+  constructor (table = 'pets_DB') {
     this.table = table
   }
 
