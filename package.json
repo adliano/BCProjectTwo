@@ -4,7 +4,8 @@
   "description": "Project 2 Starter",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
+    "localstart": "nodemon server.js",
     "lint": "standard --verbose | snazzy",
     "fix": "standard --fix .",
     "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit"
