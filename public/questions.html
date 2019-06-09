@@ -54,14 +54,15 @@
       <div class="collapse navbar-collapse" id="anchorTagsExpand">
         <!-- ul used to handle the links -->
         <ul class="navbar-nav ml-auto">
+          <!-- <li class="nav-item"> -->
+            <!-- TODO: Add the routes -->
+            <!-- <a class="nav-link" href="#">about</a> -->
+          <!-- </li> -->
           <li class="nav-item">
-            <a class="nav-link" href="index.html">about</a>
+            <a class="nav-link" href="#">New pet</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="portfolio.html">api</a>
+            <a class="nav-link" href="#">api</a>
           </li>
         </ul>
       </div>
@@ -69,7 +70,6 @@
       <!-- EDN OF CONTAINER -->
     </nav>
     <!-- END OF HEADER -->
-
     <!-- ------- Container ------ -->
     <div class="container pt-4">
       <!-- img row -->
@@ -93,48 +93,43 @@
           <h3>Questions</h3>
         </div>
         <div class="card-body">
-          <!-- //////////////////////////////// -->
+          <!-- //////////////////////////////// TODO: change ids-->
           <div class="form-group">
-              <label for="exampleFormControlSelect1">Animal Type:</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                  <option value="" selected="selected" hidden="hidden">Select an Option</option>
-                <option>Dog</option>
-                <option>Cat</option>
-                <option>Lion</option>
-                <option>Pig</option>
-                <option>Bird</option>
-                <option>Horse</option>
-              </select>
+            <label for="exampleFormControlSelect1">Animal Type:</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option value="" selected="selected" hidden="hidden"
+                >Select an Option</option
+              >
+              <option>Dog</option>
+              <option>Cat</option>
+              <option>Lion</option>
+              <option>Pig</option>
+              <option>Bird</option>
+              <option>Horse</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Animal Attitude:</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option value="" selected="selected" hidden="hidden"
+                >Select an Option</option
+              >
+              <option>Frisky</option>
+              <option>Shy</option>
+              <option>Playful</option>
+              <option>Loud</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Age</span>
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Animal Attitude:</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option value="" selected="selected" hidden="hidden">Select an Option</option>
-                  <option>Frisky</option>
-                  <option>Shy</option>
-                  <option>Playful</option>
-                  <option>Loud</option>
-                </select>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Age</span>
-              </div>
-              <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            </div>
-
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Attitude</span>
-              </div>
-              <select class="form-control" id="exampleFormControlSelect1">
-                  <option value="" selected="selected" hidden="hidden">Select an Option</option>
-                <option>Frisky</option>
-                <option>Shy</option>
-                <option>Playful</option>
-                <option>Loud</option>
-              </select>
-            </div>
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Amount (to the nearest dollar)"
+            />
+          </div>
           <!-- //////////////////////////////// -->
         </div>
       </div>
@@ -154,9 +149,9 @@
     <footer class="page-footer font-small blue fixed-bottom bg-light">
       <!-- Copyright -->
       <div class="footer-copyright text-center py-2">
-        <a href="https://github.com/adliano/BCProjectTwo" target="_blank"
-          >🐶 petinder.com</a
-        >
+        <a href="https://github.com/adliano/BCProjectTwo" target="_blank">
+          <img src="./images/github.svg" width="25px" alt="">
+          </a>
       </div>
       <!-- :: End of Copyright :: -->
     </footer>
