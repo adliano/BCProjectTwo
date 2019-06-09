@@ -1,5 +1,5 @@
 const express = require ('express');
-const ejs = require ('ejs');
+// const ejs = require ('ejs');
 const multer = require ('multer');
 const path = require ('path');
 
@@ -12,7 +12,7 @@ const port = process.env.PORT || 3030
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './public/upload');
+      cb(null, './');
 
       console.log('at line 17');
       console.log(file)
@@ -46,7 +46,7 @@ app.use(express.static('./public'));
 
 
 app.get('/' , (req, res) => {
-    res.render('index');
+    res.render('sandbox');
 });
 
 // Des
@@ -54,11 +54,11 @@ app.get('/' , (req, res) => {
 app.post('/upload', (req, res) =>{
     upload(req, res, (error) => {
         if (error){
-            res.render('index', {
+            res.render('sandbox', {
                 message: error
             })
         } else {
-            res.render('index', {
+            res.render('sandbox', {
                 message: 'Sucessfully uploaded',
                 filename: `myupload/${req.file.filename}`
             });
