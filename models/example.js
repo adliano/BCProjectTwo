@@ -18,7 +18,7 @@ const knex = require('../config/connection')
  * @class Example
  */
 class Example {
-  constructor (table = 'pets_DB') {
+  constructor (table = 'pets_tb') {
     this.table = table
   }
 
@@ -57,6 +57,35 @@ class Example {
     return knex(this.table)
       .where(where)
       .del()
+  }
+  /**
+   * update a specific todo
+   *
+   * @param {Object} where The where clause in the form of {column: value}
+   * @param {Object} values The values to update in the form of {column: value}
+   * @returns Promise
+   * @memberof Todo
+   */
+  update (where, values) {
+    return knex(this.table)
+      .where(where)
+      .update(values)
+  }
+
+  /**
+   * Finds 1 or more todos based on search criteria
+   *
+   * @param {Object} where The where clause in the form of {column: value}
+   * @default {Object} [orderBy={}] Optional Direction to order `created_at` column
+   * @returns Promise
+   * @memberof Todo
+   */
+  find (where, orderBy = {}) {
+    let mergedOrder = Object.assign({}, this.defaultOrder, orderBy)
+
+    return knex(this.table)
+      .where(where)
+      .orderBy([mergedOrder]) // object must be wrapped in an array: https://knexjs.org/#Builder-orderBy
   }
 }
 

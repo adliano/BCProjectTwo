@@ -12,6 +12,7 @@ const ENV = process.env.NODE_ENV || 'development'
 
 // Creates mySQL connection using Knex.js
 const Knex = require('knex')(require('../models/knexfile')[ENV])
+// const Knex = require('knex')(require('../models/knexfile'))
 
 /* eslint-enable, no-undef */
 
