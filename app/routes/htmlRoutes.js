@@ -1,5 +1,6 @@
 // Dependecies
 const Example = require('../models/example')
+const path = require('path')
 
 /**
  * htmlRoutes: This routes file renders views e.g. handlebars pages
@@ -20,7 +21,7 @@ module.exports = function (app) {
   })
 
   // Load example page and pass in an example by id
-  app.get('/example/:id', function (req, res) {
+  app.get('/find/:id', function (req, res) {
     Example.findOne({ where: { id: req.params.id } })
       .then(function (dbExample) {
         res.render('example', {
@@ -29,8 +30,19 @@ module.exports = function (app) {
       })
   })
 
+  // findPet
+  app.get('/addPet', function (req, res) {
+    res.sendFile(path.join(__dirname, '../public/addPet.html'))
+  })
+
+  // findPet
+  app.get('/findPet', function (req, res) {
+    res.sendFile(path.join(__dirname, '../public/questions.html'))
+  })
+
   // Render 404 page for any unmatched routes
   app.get('*', function (req, res) {
-    res.render('404')
+    // res.render('404')
+    res.sendFile(path.join(__dirname, '../public/404.html'))
   })
 }
