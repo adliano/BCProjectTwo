@@ -11,9 +11,9 @@ const exphbs = require('express-handlebars')
 
 const app = express()
 const PORT = process.env.PORT || 3000
-/* eslint-disable */
-const ENV = process.env.NODE_ENV || 'development'
-/* eslint-enable */
+// /* eslint-disable */
+// const ENV = process.env.NODE_ENV || 'development'
+// /* eslint-enable */
 
 // Middleware
 app.use(express.urlencoded({ extended: false }))
