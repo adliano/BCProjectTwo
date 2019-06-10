@@ -10,7 +10,7 @@ const Example = require('../models/example')
 
 module.exports = function (app) {
   // Get all examples
-  app.get('/api/examples', function (req, res) {
+  app.get('/api/findAll', function (req, res) {
     Example.findAll()
       .then(function (dbExamples) {
         res.json(dbExamples)
@@ -18,7 +18,7 @@ module.exports = function (app) {
   })
 
   // Create a new example
-  app.post('/api/examples', function (req, res) {
+  app.post('/api/create', function (req, res) {
     Example.create(req.body)
       .then(function (dbExample) {
         res.json(dbExample)
@@ -26,7 +26,7 @@ module.exports = function (app) {
   })
 
   // Delete an example by id
-  app.delete('/api/examples/:id', function (req, res) {
+  app.delete('/api/delete/:id', function (req, res) {
     Example.destroy(req.params)
       .then(function (dbExample) {
         res.json(dbExample)
