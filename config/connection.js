@@ -10,7 +10,7 @@ const mysql = require('mysql')
 /* eslint-enable  no-unused-vars */
 
 // Creates mySQL connection using Knex.js
-const Knex = require('knex')(require('../models/knexfile')[ENV])
+const Knex = require('knex')(require('../knexfile')[ENV])
 // const knex = require('knex')('production')
 
 // const Knex = require('knex')(require('../models/knexfile'))
