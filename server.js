@@ -30,8 +30,8 @@ app.engine(
 app.set('view engine', 'handlebars')
 
 // Routes
-require('./routes/apiRoutes')(app)
-require('./routes/htmlRoutes')(app)
+require('./app/routes/apiRoutes')(app)
+require('./app/routes/htmlRoutes')(app)
 
 // Starting our Express app
 // =============================================================
