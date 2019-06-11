@@ -10,11 +10,18 @@ console.log('index.js loaded at addPet.html')
 // TODO: implement this button
 // let getPetBtn = document.querySelector('.getPet')
 let setPetBtn = document.querySelector('.setPet')
-let getAnimalName = document.querySelector('.getAnimalName')
-let getAnimalAge = document.querySelector('.getAnimalAge')
-let getAnimalType = document.querySelector('.getAnimalType')
-let getanimalAttitude = document.querySelector('.getanimalAttitude')
-let getPictName = document.querySelector('.getPictName')
+let dataInputs = {
+  getAnimalName: document.querySelector('.getAnimalName'),
+  getAnimalAge: document.querySelector('.getAnimalAge'),
+  getAnimalType: document.querySelector('.getAnimalType'),
+  getanimalAttitude: document.querySelector('.getanimalAttitude'),
+  getPictName: document.querySelector('.getPictName')
+}
+// let getAnimalName = document.querySelector('.getAnimalName')
+// let getAnimalAge = document.querySelector('.getAnimalAge')
+// let getAnimalType = document.querySelector('.getAnimalType')
+// let getanimalAttitude = document.querySelector('.getanimalAttitude')
+// let getPictName = document.querySelector('.getPictName')
 
 // The API object contains methods for each kind of request we'll make
 class API {
@@ -23,11 +30,11 @@ class API {
     this.someDefault = someDefault
   }
   // This will fetch the API to create a new pet
-  savePet (example) {
+  savePet (data) {
     return fetch('/api/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(example)
+      body: JSON.stringify(data)
     })
   }
 
@@ -86,15 +93,19 @@ let handleFormSubmit = function (event) {
   let api = new API()
 
   // FIXME: Suppose Multer are saiving imgs at public/uploads
-  let imagPath = `/uploads/${getPictName.value.split('\\')[2]}`
+  // Generate file path base on Express/Multer settings for static route
+  // let imagPath = `/uploads/${getPictName.value.split('\\')[2]}`
+  let imagPath = `/uploads/${dataInputs.getPictName.value.split('\\')[2]}`
+
   // TODO: Get the pet infoS
+  // FIXME: isAdopted
+  // TODO: Karina its working on Multer
   let petToAdd = {
-    petName: getAnimalName.value.trim(),
-    type: getAnimalType.value.trim(),
-    attitude: getanimalAttitude.value.trim(),
-    isAdopted: false, // FIXME: ?????
-    age: getAnimalAge.value.trim(),
-    // TODO: Karina its working on it
+    petName: dataInputs.getAnimalName.value.trim(),
+    type: dataInputs.getAnimalType.value.trim(),
+    attitude: dataInputs.getanimalAttitude.value.trim(),
+    // isAdopted: false,
+    age: dataInputs.getAnimalAge.value.trim(),
     imgPath: imagPath
   }
 
@@ -105,12 +116,15 @@ let handleFormSubmit = function (event) {
   //   return
   // }
 
-  api.savePet(petToAdd).then(function () {
-    refreshExamples()
+  api.savePet(petToAdd).then(function (data) {
+    // refreshExamples()
+    console.log(data)
   })
 
-  // exampleText.value = ''
-  // exampleDescription.value = ''
+  // Rest all fields
+  for (let key in dataInputs) {
+    dataInputs[key].value = ''
+  }
 }
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
