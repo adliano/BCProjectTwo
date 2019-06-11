@@ -17,6 +17,17 @@ module.exports = function (app) {
       })
   })
 
+  // // Change code to find a specific ID
+  // app.get("/api/:book", function(req, res) {
+  //   Book.findAll({
+  //     where: {
+  //       title: req.params.book
+  //     }
+  //   }).then(function(results) {
+  //     res.json(results);
+  //   });
+  // });
+
   // Create a new example
   app.post('/api/create', function (req, res) {
     console.log(req.body)
@@ -31,6 +42,18 @@ module.exports = function (app) {
     Example.destroy(req.params)
       .then(function (dbExample) {
         res.json(dbExample)
+      })
+  })
+  // PUT route for updating. The updated example will be available in req.body
+  app.put('/api/update/:id', function (req, res) {
+    Example.update(req.params, req.body)
+      .then(results => {
+        console.log(`
+      *****
+      Examole.update():
+      ${results}`)
+
+        res.json(results)
       })
   })
 }
