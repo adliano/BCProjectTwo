@@ -9,6 +9,7 @@ const path = require('path')
  *
  */
 module.exports = function (app) {
+  // we are in production so let's not remove any old code for now
   // Load index page
   // app.get('/', function (req, res) {
   //   Example.findAll({})
@@ -29,20 +30,19 @@ module.exports = function (app) {
         })
       })
   })
-
+  // Html route for home (root)
   app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, '../public/index.html'))
   })
-  // addPet
+  // Html route for addPet
   app.get('/addPet', function (req, res) {
     res.sendFile(path.join(__dirname, '../public/addPet.html'))
   })
 
-  // findPet
+  // Html route for findPet
   app.get('/findPet', function (req, res) {
     res.sendFile(path.join(__dirname, '../public/questions.html'))
   })
-
   // Render 404 page for any unmatched routes
   app.get('*', function (req, res) {
     // res.render('404')
