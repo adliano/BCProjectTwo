@@ -105,10 +105,9 @@ let handleFormSubmit = function (event) {
   //   return
   // }
 
-  // FIXME: implement this
-  // api.savePet(example).then(function () {
-  //   refreshExamples()
-  // })
+  api.savePet(petToAdd).then(function () {
+    refreshExamples()
+  })
 
   // exampleText.value = ''
   // exampleDescription.value = ''
