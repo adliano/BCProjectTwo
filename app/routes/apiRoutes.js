@@ -45,7 +45,7 @@ module.exports = function (app) {
       })
   })
   // PUT route for updating. The updated example will be available in req.body
-  app.put('/api/update/:id', function (req, res) {
+  app.put('/api/examples/:id', function (req, res) {
     Example.update(req.params, req.body)
       .then(results => {
         console.log(`
