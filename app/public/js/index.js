@@ -2,10 +2,6 @@ console.log('index.js loaded at addPet.html')
 
 // Get references to page elements
 /* eslint-disable no-undef */
-// let exampleText = document.querySelector('#example-text')
-// let exampleDescription = document.querySelector('#example-description')
-// let submitBtn = document.querySelector('#submit')
-// let exampleList = document.querySelector('#example-list')
 /* ************ 🌍 Globals 🌏 *************** */
 // TODO: implement this button
 // let getPetBtn = document.querySelector('.getPet')
@@ -17,11 +13,6 @@ let dataInputs = {
   getanimalAttitude: document.querySelector('.getanimalAttitude'),
   getPictName: document.querySelector('.getPictName')
 }
-// let getAnimalName = document.querySelector('.getAnimalName')
-// let getAnimalAge = document.querySelector('.getAnimalAge')
-// let getAnimalType = document.querySelector('.getAnimalType')
-// let getanimalAttitude = document.querySelector('.getanimalAttitude')
-// let getPictName = document.querySelector('.getPictName')
 
 // The API object contains methods for each kind of request we'll make
 class API {
@@ -49,6 +40,59 @@ class API {
     })
   }
 }
+/*
+******************* Event Listner ***********************
+ */
+// Event Listner for setPet
+// handleFormSubmit is called whenever we submit a new Pet
+// Save the new example to the db and refresh the list
+let handleFormSubmit = function (event) {
+  event.preventDefault()
+  let api = new API()
+
+  // FIXME: Suppose Multer are saiving imgs at public/uploads
+  // Generate file path base on Express/Multer settings for static route
+  // let imagPath = `/uploads/${getPictName.value.split('\\')[2]}`
+  let imagPath = `/uploads/${dataInputs.getPictName.value.split('\\')[2]}`
+
+  // TODO: Get the pet infoS
+  // FIXME: isAdopted
+  // TODO: Karina its working on Multer
+  let petToAdd = {
+    petName: dataInputs.getAnimalName.value.trim(),
+    type: dataInputs.getAnimalType.value.trim(),
+    attitude: dataInputs.getanimalAttitude.value.trim(),
+    // isAdopted: false,
+    age: dataInputs.getAnimalAge.value.trim(),
+    imgPath: imagPath
+  }
+
+  // Check if All inputs has data
+  for (let key in dataInputs) {
+    if (dataInputs[key].value.trim().length === 0) {
+      alert(`'You must enter all data!'`)
+      return
+    }
+  }
+  // Save Animals data
+  api.savePet(petToAdd).then(function (data) {
+    // refreshExamples()
+    console.log(data)
+  })
+
+  // Rest all fields
+  for (let key in dataInputs) {
+    dataInputs[key].value = ''
+  }
+}
+
+// Add event listeners to the submit and delete buttons
+setPetBtn.addEventListener('click', handleFormSubmit)
+// exampleList.addEventListener('click', handleDeleteBtnClick)
+
+/* eslint-enable no-undef */
+
+// NOTES
 /* ******* OLD CODE ************ */
 // refreshExamples gets new examples from the db and repopulates the list
 // let refreshExamples = function () {
@@ -82,50 +126,6 @@ class API {
 //       }
 //     })
 // }
-/*
-******************* Event Listner ***********************
- */
-// Event Listner for setPet
-// handleFormSubmit is called whenever we submit a new Pet
-// Save the new example to the db and refresh the list
-let handleFormSubmit = function (event) {
-  event.preventDefault()
-  let api = new API()
-
-  // FIXME: Suppose Multer are saiving imgs at public/uploads
-  // Generate file path base on Express/Multer settings for static route
-  // let imagPath = `/uploads/${getPictName.value.split('\\')[2]}`
-  let imagPath = `/uploads/${dataInputs.getPictName.value.split('\\')[2]}`
-
-  // TODO: Get the pet infoS
-  // FIXME: isAdopted
-  // TODO: Karina its working on Multer
-  let petToAdd = {
-    petName: dataInputs.getAnimalName.value.trim(),
-    type: dataInputs.getAnimalType.value.trim(),
-    attitude: dataInputs.getanimalAttitude.value.trim(),
-    // isAdopted: false,
-    age: dataInputs.getAnimalAge.value.trim(),
-    imgPath: imagPath
-  }
-
-  console.log(petToAdd)
-
-  // if (!(example.text && example.description)) {
-  //   alert('You must enter an example text and description!')
-  //   return
-  // }
-
-  api.savePet(petToAdd).then(function (data) {
-    // refreshExamples()
-    console.log(data)
-  })
-
-  // Rest all fields
-  for (let key in dataInputs) {
-    dataInputs[key].value = ''
-  }
-}
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
@@ -140,9 +140,3 @@ let handleFormSubmit = function (event) {
 //     })
 //   }
 // }
-
-// Add event listeners to the submit and delete buttons
-setPetBtn.addEventListener('click', handleFormSubmit)
-// exampleList.addEventListener('click', handleDeleteBtnClick)
-
-/* eslint-enable no-undef */
