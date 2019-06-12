@@ -1,5 +1,5 @@
 // *********************************************************************************
-// Example.js - This file offers a set of easier-to-use methods for interacting with the MySQL db.
+// Pet.js - This file offers a set of easier-to-use methods for interacting with the MySQL db.
 // *********************************************************************************
 
 // Dependencies
@@ -10,11 +10,11 @@ const knex = require('../config/connection')
 // []create and implement update() to update a single record on database
 
 /**
- * Queries the Example database
+ * Queries the Pet database
  *
- * @class Example
+ * @class Pet
  */
-class Example {
+class Pet {
   constructor (table = 'pets_tb') {
     this.table = table
   }
@@ -23,7 +23,7 @@ class Example {
    *
    * Find all Examples in the table
    * @returns Promise
-   * @memberof Example
+   * @memberof Pet
    */
   findAll () {
     return knex.select()
@@ -35,7 +35,7 @@ class Example {
  *
  * @param {Object} values The values to insert in the form of {column: value}
  * @returns Promise
- * @memberof Example
+ * @memberof Pet
  */
   create (values) {
     return knex(this.table)
@@ -48,7 +48,7 @@ class Example {
    *
    * @param {Object} where The where clause in the form of {column: value}
    * @returns Promise
-   * @memberof Example
+   * @memberof Pet
    */
   destroy (where) {
     return knex(this.table)
@@ -61,7 +61,7 @@ class Example {
    * @param {Object} where The where clause in the form of {column: value}
    * @param {Object} values The values to update in the form of {column: value}
    * @returns Promise
-   * @memberof Todo
+   * @memberof Pet
    */
   update (where, values) {
     return knex(this.table)
@@ -75,7 +75,7 @@ class Example {
    * @param {Object} where The where clause in the form of {column: value}
    * @default {Object} [orderBy={}] Optional Direction to order `created_at` column
    * @returns Promise
-   * @memberof Todo
+   * @memberof Pet
    */
   find (where, orderBy = {}) {
     let mergedOrder = Object.assign({}, this.defaultOrder, orderBy)
@@ -84,6 +84,17 @@ class Example {
       .where(where)
       .orderBy([mergedOrder]) // object must be wrapped in an array: https://knexjs.org/#Builder-orderBy
   }
+
+  /**
+   * Warning this drops and recreates table
+   *
+   * @returns Promise
+   * @memberof Pet
+  */
+  reset () {
+    console.log('Hola')
+    return knex(this.table).truncate()
+  }
 }
 
-module.exports = new Example()
+module.exports = new Pet()
