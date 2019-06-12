@@ -1,5 +1,5 @@
 // Dependecies
-const Example = require('../models/example')
+const Pet = require('../models/pets')
 const path = require('path')
 
 /**
@@ -23,7 +23,7 @@ module.exports = function (app) {
 
   // Load example page and pass in an example by id
   app.get('/find/:id', function (req, res) {
-    Example.findOne({ where: { id: req.params.id } })
+    Pet.findOne({ where: { id: req.params.id } })
       .then(function (dbExample) {
         res.render('example', {
           example: dbExample

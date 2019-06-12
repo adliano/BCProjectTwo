@@ -1,5 +1,5 @@
 // Dependencies
-const Example = require('../models/example')
+const Pet = require('../models/pets')
 
 /**
  * apiRoutes: This routes file returns data to the client/view
@@ -11,7 +11,7 @@ const Example = require('../models/example')
 module.exports = function (app) {
   // Get all examples
   app.get('/api/findAll', function (req, res) {
-    Example.findAll()
+    Pet.findAll()
       .then(function (dbExamples) {
         res.json(dbExamples)
       })
@@ -19,7 +19,7 @@ module.exports = function (app) {
 
   // Change code to find a specific ID
   app.get('/api/:specific', function (req, res) {
-    Example.findAll({
+    Pet.findAll({
       where: {
         petName: req.params.specific
       }
@@ -31,7 +31,7 @@ module.exports = function (app) {
   // Create a new example
   app.post('/api/create', function (req, res) {
     console.log(req.body)
-    Example.create(req.body)
+    Pet.create(req.body)
       .then(function (dbExample) {
         res.json(dbExample)
       })
@@ -39,14 +39,14 @@ module.exports = function (app) {
 
   // Delete an example by id
   app.delete('/api/delete/:id', function (req, res) {
-    Example.destroy(req.params)
+    Pet.destroy(req.params)
       .then(function (dbExample) {
         res.json(dbExample)
       })
   })
   // PUT route for updating. The updated example will be available in req.body
   app.put('/api/examples/:id', function (req, res) {
-    Example.update(req.params, req.body)
+    Pet.update(req.params, req.body)
       .then(results => {
         console.log(`
       *****
