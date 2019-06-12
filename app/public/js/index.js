@@ -1,108 +1,142 @@
+console.log('index.js loaded at addPet.html')
+
 // Get references to page elements
 /* eslint-disable no-undef */
-let exampleText = document.querySelector('#example-text')
-let exampleDescription = document.querySelector('#example-description')
-let submitBtn = document.querySelector('#submit')
-let exampleList = document.querySelector('#example-list')
+/* ************ 🌍 Globals 🌏 *************** */
+// TODO: implement this button
+// let getPetBtn = document.querySelector('.getPet')
+let setPetBtn = document.querySelector('.setPet')
+let dataInputs = {
+  getAnimalName: document.querySelector('.getAnimalName'),
+  getAnimalAge: document.querySelector('.getAnimalAge'),
+  getAnimalType: document.querySelector('.getAnimalType'),
+  getanimalAttitude: document.querySelector('.getanimalAttitude'),
+  getPictName: document.querySelector('.getPictName')
+}
 
 // The API object contains methods for each kind of request we'll make
 class API {
+  // Constructor
   constructor (someDefault = 'defaultVal') {
     this.someDefault = someDefault
   }
-
-  saveExample (example) {
-    return fetch('api/examples', {
+  // This will fetch the API to create a new pet
+  savePet (data) {
+    return fetch('/api/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(example)
+      body: JSON.stringify(data)
     })
   }
 
   getExamples () {
+    // TODO: need to do on routes
     return fetch('api/examples')
   }
-
-  deleteExample (id) {
-    return fetch('api/examples/' + id, {
+  // Thsi will be used to remove a pet from database
+  deletePet (id) {
+    return fetch('/api/delete/' + id, {
       method: 'DELETE'
     })
   }
 }
-
-// refreshExamples gets new examples from the db and repopulates the list
-let refreshExamples = function () {
-  let api = new API()
-
-  api
-    .getExamples()
-    .then(results => results.json())
-    .then(function (data) {
-      while (exampleList.firstChild) {
-        exampleList.removeChild(exampleList.firstChild)
-      }
-
-      for (let example of data) {
-        let aElem = document.createElement('a')
-        aElem.textContent = example.text
-        aElem.setAttribute('href', '/example/' + example.id)
-
-        let liElem = document.createElement('li')
-        liElem.classList.add('list-group-item')
-        liElem.dataset.id = example.id
-        liElem.appendChild(aElem)
-
-        let buttonElem = document.createElement('button')
-        buttonElem.classList.add('btn', 'btn-danger', 'float-right', 'delete')
-        buttonElem.textContent = 'ｘ'
-
-        liElem.appendChild(buttonElem)
-
-        exampleList.appendChild(liElem)
-      }
-    })
-}
-
-// handleFormSubmit is called whenever we submit a new example
+/*
+******************* Event Listner ***********************
+ */
+// Event Listner for setPet
+// handleFormSubmit is called whenever we submit a new Pet
 // Save the new example to the db and refresh the list
 let handleFormSubmit = function (event) {
   event.preventDefault()
   let api = new API()
 
-  let example = {
-    text: exampleText.value.trim(),
-    description: exampleDescription.value.trim()
+  // FIXME: Suppose Multer are saiving imgs at public/uploads
+  // Generate file path base on Express/Multer settings for static route
+  // let imagPath = `/uploads/${getPictName.value.split('\\')[2]}`
+  let imagPath = `/uploads/${dataInputs.getPictName.value.split('\\')[2]}`
+
+  // TODO: Get the pet infoS
+  // FIXME: isAdopted
+  // TODO: Karina its working on Multer
+  let petToAdd = {
+    petName: dataInputs.getAnimalName.value.trim(),
+    type: dataInputs.getAnimalType.value.trim(),
+    attitude: dataInputs.getanimalAttitude.value.trim(),
+    // isAdopted: false,
+    age: dataInputs.getAnimalAge.value.trim(),
+    imgPath: imagPath
   }
 
-  if (!(example.text && example.description)) {
-    alert('You must enter an example text and description!')
-    return
+  // Check if All inputs has data
+  for (let key in dataInputs) {
+    if (dataInputs[key].value.trim().length === 0) {
+      alert(`'You must enter all data!'`)
+      return
+    }
   }
-
-  api.saveExample(example).then(function () {
-    refreshExamples()
+  // Save Animals data
+  api.savePet(petToAdd).then(function (data) {
+    // refreshExamples()
+    console.log(data)
   })
 
-  exampleText.value = ''
-  exampleDescription.value = ''
-}
-
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-let handleDeleteBtnClick = function (event) {
-  if (event.target.matches('button.delete')) {
-    let api = new API()
-
-    let idToDelete = event.target.parentElement.dataset.id
-
-    api.deleteExample(idToDelete).then(function () {
-      refreshExamples()
-    })
+  // Rest all fields
+  for (let key in dataInputs) {
+    dataInputs[key].value = ''
   }
 }
 
 // Add event listeners to the submit and delete buttons
-submitBtn.addEventListener('click', handleFormSubmit)
-exampleList.addEventListener('click', handleDeleteBtnClick)
+setPetBtn.addEventListener('click', handleFormSubmit)
+// exampleList.addEventListener('click', handleDeleteBtnClick)
 
 /* eslint-enable no-undef */
+
+// NOTES
+/* ******* OLD CODE ************ */
+// refreshExamples gets new examples from the db and repopulates the list
+// let refreshExamples = function () {
+//   let api = new API()
+
+//   api
+//     .getExamples()
+//     .then(results => results.json())
+//     .then(function (data) {
+//       while (exampleList.firstChild) {
+//         exampleList.removeChild(exampleList.firstChild)
+//       }
+
+//       for (let example of data) {
+//         let aElem = document.createElement('a')
+//         aElem.textContent = example.text
+//         aElem.setAttribute('href', '/example/' + example.id)
+
+//         let liElem = document.createElement('li')
+//         liElem.classList.add('list-group-item')
+//         liElem.dataset.id = example.id
+//         liElem.appendChild(aElem)
+
+//         let buttonElem = document.createElement('button')
+//         buttonElem.classList.add('btn', 'btn-danger', 'float-right', 'delete')
+//         buttonElem.textContent = 'ｘ'
+
+//         liElem.appendChild(buttonElem)
+
+//         exampleList.appendChild(liElem)
+//       }
+//     })
+// }
+
+// handleDeleteBtnClick is called when an example's delete button is clicked
+// Remove the example from the db and refresh the list
+// let handleDeleteBtnClick = function (event) {
+//   if (event.target.matches('button.delete')) {
+//     let api = new API()
+
+//     let idToDelete = event.target.parentElement.dataset.id
+
+//     api.deleteExample(idToDelete).then(function () {
+//       refreshExamples()
+//     })
+//   }
+// }

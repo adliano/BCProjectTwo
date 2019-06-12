@@ -1,181 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Petinder</title>
-    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon"/>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
-    <!-- Application css -->
-    <link rel="stylesheet" href="./styles/styles.css" />
-  </head>
-  <!-- ------------------------------------------- -->
-  <!-- ---------------- BODY --------------------- -->
-  <!-- ------------------------------------------- -->
-  <body>
-    <!-- * * * * HEADER * * * * -->
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="/">
-        <!-- Navbar LOGO -->
-        <img src="./images/feather_purr.svg"
-          width="30"
-          height="30"
-          class="d-inline-block align-top"
-          alt=""/>
-        Petinder
-      </a>
-      <!-- Button used to show toggler button on small view -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#anchorTagsExpand"
-        aria-controls="anchorTagsExpand"
-        aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- Whatever need to colapse most be placed inside container bellow -->
-      <div class="collapse navbar-collapse" id="anchorTagsExpand">
-        <!-- ul used to handle the links -->
-        <ul class="navbar-nav ml-auto">
-          <!-- <li class="nav-item"> -->
-            <!-- TODO: Add the routes -->
-            <!-- <a class="nav-link" href="#">about</a> -->
-          <!-- </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="/findPet">Got pet?</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">api</a>
-          </li>
-        </ul>
+
+<head>
+  <title>Petinder</title>
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <!-- Application css -->
+  <link rel="stylesheet" href="./styles/styles.css" />
+</head>
+<!-- ------------------------------------------- -->
+<!-- ---------------- BODY --------------------- -->
+<!-- ------------------------------------------- -->
+
+<body>
+  <!-- * * * * HEADER * * * * -->
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">
+      <!-- Navbar LOGO -->
+      <img src="./images/feather_purr.svg" width="30" height="30" class="d-inline-block align-top" alt="" />
+      Petinder
+    </a>
+    <!-- Button used to show toggler button on small view -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#anchorTagsExpand" aria-controls="anchorTagsExpand" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Whatever need to colapse most be placed inside container bellow -->
+    <div class="collapse navbar-collapse" id="anchorTagsExpand">
+      <!-- ul used to handle the links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- <li class="nav-item"> -->
+        <!-- TODO: Add the routes -->
+        <!-- <a class="nav-link" href="#">about</a> -->
+        <!-- </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="/findPet">Got pet?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">api</a>
+        </li>
+      </ul>
+    </div>
+    <!-- END OF COLLAPSE -->
+    <!-- EDN OF CONTAINER -->
+  </nav>
+  <!-- END OF HEADER -->
+  <!-- ------- Container ------ -->
+  <div class="container pt-4">
+    <!-- img row -->
+    <div class="row mt-3">
+      <div class="mx-auto">
+        <!-- Image -->
+        <img src="./images/ki85j78eT.png" alt="Placeholder" width="350px" />
       </div>
-      <!-- END OF COLLAPSE -->
-      <!-- EDN OF CONTAINER -->
-    </nav>
-    <!-- END OF HEADER -->
-    <!-- ------- Container ------ -->
-    <div class="container pt-4">
-      <!-- img row -->
-      <div class="row mt-3">
-        <div class="mx-auto">
-          <!-- Image -->
-          <img src="./images/ki85j78eT.png" alt="Placeholder" width="350px" />
-        </div>
+    </div>
+    <!-- Text row -->
+    <div class="row mt-3">
+      <div class="mx-auto text-center mx-3">
+        <h1>Laborum do ut fugiat irure sint in.</h1>
       </div>
-      <!-- Text row -->
-      <div class="row mt-3">
-        <div class="mx-auto text-center mx-3">
-          <h1>Laborum do ut fugiat irure sint in.</h1>
-        </div>
+    </div>
+    <!-- --------------------- -->
+    <!-- ------- FORMS ------- -->
+    <!-- --------------------- -->
+    <div class="card my-4">
+      <div class="card-header">
+        <h3 class="p-1"><img src="./images/feather_identify.svg" alt="add"> Add Pet</h3>
       </div>
-      <!-- --------------------- -->
-      <!-- ------- FORMS ------- -->
-      <!-- --------------------- -->
-      <div class="card my-4">
-        <div class="card-header">
-          <h3 class="p-1"><img src="./images/feather_identify.svg" alt="add"> Add Pet</h3>
-        </div>
-        <div class="card-body">
-          <!-- //////////////////////////////// TODO: change ids-->
-          <!-- get pet name -->
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Name</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"/>
+      <div class="card-body">
+        <!-- //////////////////////////////// TODO:-->
+        <!-- get pet name -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Name</span>
           </div>
-          <!-- get pet age -->
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text px-4">Age</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"/>
+          <input type="text" class="form-control getAnimalName" aria-label="Animal's Name" />
+        </div>
+        <!-- get pet age -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text px-4">Age</span>
           </div>
-          <!-- img choose -->
-          <form>
-                <div class="form-group">
-                  <label for="exampleFormControlFile1">Example file input</label>
-                  <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                </div>
-              </form>
-          <!-- questions -->
+          <input type="text" class="form-control getAnimalAge" aria-label="Animal's Age" />
+        </div>
+
+        <!-- questions -->
+        <div class="form-group">
+          <label for="petType">Animal Type:</label>
+          <select class="form-control getAnimalType" id="petType">
+            <option value="" selected="selected" hidden="hidden">Select an Option</option>
+            <option>Dog</option>
+            <option>Cat</option>
+            <option>Lion</option>
+            <option>Pig</option>
+            <option>Bird</option>
+            <option>Horse</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="animalAttitude">Animal Attitude:</label>
+          <select class="form-control getanimalAttitude" id="animalAttitude">
+            <option value="" selected="selected" hidden="hidden">Select an Option</option>
+            <option>Frisky</option>
+            <option>Shy</option>
+            <option>Playful</option>
+            <option>Loud</option>
+          </select>
+        </div>
+        <!-- img choose -->
+        <form>
           <div class="form-group">
-            <label for="exampleFormControlSelect1">Animal Type:</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option value="" selected="selected" hidden="hidden">Select an Option</option>
-              <option>Dog</option>
-              <option>Cat</option>
-              <option>Lion</option>
-              <option>Pig</option>
-              <option>Bird</option>
-              <option>Horse</option>
-            </select>
+            <label for="pictureName">Animal's picture</label>
+            <input type="file" class="form-control-file getPictName" id="pictureName" accept="image/*">
           </div>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Animal Attitude:</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option value="" selected="selected" hidden="hidden">Select an Option</option>
-              <option>Frisky</option>
-              <option>Shy</option>
-              <option>Playful</option>
-              <option>Loud</option>
-            </select>
-          </div>
-          <!-- <div class="input-group mb-3">
+        </form>
+        <!-- <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text">Age</span>
             </div>
             <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"/>
           </div> -->
-          <!-- //////////////////////////////// -->
-        </div>
-      </div>
-      <!-- end of forms -->
-
-      <!-- Buttons row -->
-      <div class="row my-5">
-        <div class="col text-center my-2">
-          <button type="button" class="btn btn-primary w-50 my-1">
-            Submit
-          </button>
-        </div>
+        <!-- //////////////////////////////// -->
       </div>
     </div>
-    <!-- :: End of container ::-->
-    <!-- -------- Footer -------- -->
-    <footer class="page-footer font-small blue fixed-bottom bg-light">
-      <!-- Copyright -->
-      <div class="footer-copyright text-center py-2">
-        <a href="https://github.com/adliano/BCProjectTwo" target="_blank">
-          <img src="./images/github.svg" width="25px" alt="">
-          </a>
-      </div>
-      <!-- :: End of Copyright :: -->
-    </footer>
-    <!-- :: End of Footer :: -->
+    <!-- end of forms -->
 
-    <!-- ***************************************** -->
-    <!-- ********** Optional JavaScript ********** -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <!-- Buttons row -->
+    <div class="row my-5">
+      <div class="col text-center my-2">
+        <button type="button" class="btn btn-primary w-50 my-1 setPet">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- :: End of container ::-->
+  <!-- -------- Footer -------- -->
+  <footer class="page-footer font-small blue fixed-bottom bg-light">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-2">
+      <a href="https://github.com/adliano/BCProjectTwo" target="_blank">
+        <img src="./images/github.svg" width="25px" alt="">
+      </a>
+    </div>
+    <!-- :: End of Copyright :: -->
+  </footer>
+  <!-- :: End of Footer :: -->
+
+  <!-- ***************************************** -->
+  <!-- ********** Optional JavaScript ********** -->
+  <!-- ***************************************** -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="./js/index.js"></script>
+</body>
+
 </html>
