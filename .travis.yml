@@ -9,7 +9,7 @@ cache:
 before_install:
   - mysql -e 'CREATE DATABASE testdb;'
   - mysql -e 'CREATE USER "nodeUser"@"localhost" IDENTIFIED BY "";'
-  - mysql -e 'GRANT ALL ON *.* to "nodeUser"@"localhost" WHITH GRANT OPTION;'
+  - mysql -e 'GRANT ALL ON *.* to "nodeUser"@"localhost" WITH GRANT OPTION;'
 env:
   global:
     - describe
