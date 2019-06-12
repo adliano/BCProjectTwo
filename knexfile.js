@@ -3,37 +3,42 @@
 module.exports = {
 
   development: {
-    client: 'mysql',
+    client: 'sqlite3',
     connection: {
-      host: 'localhost',
-      port: 3306,
-      user: 'nodeUser',
-      password: '',
-      database: 'pets_DB',
-      debug: ['ComQueryPacket', 'RowDataPacket']
+      filename: './dev.sqlite3'
     }
   },
 
   staging: {
-    client: 'mysql',
+    client: 'postgresql',
     connection: {
-      host: 'localhost',
-      port: 3306,
-      user: 'nodeUser',
-      password: '',
-      database: 'pets_DB',
-      debug: ['ComQueryPacket', 'RowDataPacket']
+      database: 'my_db',
+      user:     'username',
+      password: 'password'
+    },
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: 'knex_migrations'
     }
   },
 
   production: {
-    client: 'mysql',
+    client: 'postgresql',
     connection: {
-      host: process.env.DATABASE_URL,
-      port: 3306,
-      user: 'nodeUser',
-      password: '',
-      database: 'pets_DB'
+      database: 'my_db',
+      user:     'username',
+      password: 'password'
+    },
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: 'knex_migrations'
     }
   }
-}
+
+};
