@@ -17,16 +17,16 @@ module.exports = function (app) {
       })
   })
 
-  // // Change code to find a specific ID
-  // app.get("/api/:book", function(req, res) {
-  //   Book.findAll({
-  //     where: {
-  //       title: req.params.book
-  //     }
-  //   }).then(function(results) {
-  //     res.json(results);
-  //   });
-  // });
+  // Change code to find a specific ID
+  app.get('/api/:specific', function (req, res) {
+    Example.findAll({
+      where: {
+        petName: req.params.specific
+      }
+    }).then(function (results) {
+      res.json(results)
+    })
+  })
 
   // Create a new example
   app.post('/api/create', function (req, res) {
@@ -50,7 +50,7 @@ module.exports = function (app) {
       .then(results => {
         console.log(`
       *****
-      Examole.update():
+      Example.update():
       ${results}`)
 
         res.json(results)
