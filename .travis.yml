@@ -8,11 +8,13 @@ cache:
     - node_modules
 before_install:
   - mysql -e 'CREATE DATABASE testdb;'
+  - mysql -e 'CREATE USER "nodeUser"@"localhost" IDENTIFIED BY "";'
+  - mysql -e 'GRANT ALL ON *.* to "nodeUser"@"localhost" WHITH GRANT OPTION;'
 env:
   global:
     - describe
-test:
-  adapter: mysql2
-  database: testdb
-  username: nodeUser
-  encoding: utf8
+# test:
+#   adapter: mysql2
+#   database: testdb
+#   username: nodeUser
+#   encoding: utf8
