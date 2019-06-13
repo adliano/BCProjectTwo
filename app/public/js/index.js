@@ -3,11 +3,9 @@ console.log('index.js loaded at addPet.html')
 // Get references to page elements
 /* eslint-disable no-undef */
 /* ************ 🌍 Globals 🌏 *************** */
-// TODO: implement this button
-// let getPetBtn = document.querySelector('.getPet')
 let setPetBtn = document.querySelector('.setPet')
 let availablePetsContainer = document.querySelector('#petsContainer')
-
+// Object with all input elements.
 let dataInputs = {
   getAnimalName: document.querySelector('.getAnimalName'),
   getAnimalAge: document.querySelector('.getAnimalAge'),
@@ -30,7 +28,8 @@ class API {
       body: JSON.stringify(data)
     })
   }
-  // TODO:
+  // This will fetch all pets available on database and display on
+  // availablePets.html
   getAllPets () {
     // GET method is Default on fetch
     return fetch('api/findAll')
@@ -51,9 +50,11 @@ class API {
 /**
  *
  * Code used For availablePets.html
+ * This will Create a card and add the card to petContainer
  *
  */
 function mkPetCard (petJSON) {
+  // Code for card (Bootstrap)
   let _colCard =
   `<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-7 p-1">
     <div class="card p-1 gif-card">
@@ -66,9 +67,8 @@ function mkPetCard (petJSON) {
         </div>
       </div>
   </div>`
-
+  // Insert beforeend
   availablePetsContainer.insertAdjacentHTML('beforeend', _colCard)
-  // return _colCard
 }
 /*
 ******************* Event Listner ***********************
@@ -92,7 +92,6 @@ let handleFormSubmit = function (event) {
     petName: dataInputs.getAnimalName.value.trim(),
     type: dataInputs.getAnimalType.value.trim(),
     attitude: dataInputs.getanimalAttitude.value.trim(),
-    // isAdopted: false,
     age: dataInputs.getAnimalAge.value.trim(),
     imgPath: imagPath
   }
@@ -115,8 +114,10 @@ let handleFormSubmit = function (event) {
     dataInputs[key].value = ''
   }
 }
+// FIXME: this is logging error on browser console
 let _api = new API()
 _api.getAllPets()
+
 // Add event listeners to the submit and delete buttons
 setPetBtn.addEventListener('click', handleFormSubmit)
 
