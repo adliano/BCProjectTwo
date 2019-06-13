@@ -40,6 +40,26 @@ class API {
     })
   }
 }
+/**
+ *
+ *
+ */
+function mkPetCard (petJSON) {
+  let _colCard =
+  `<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-7 p-1">
+    <div class="card p-1 gif-card">
+      <h4 class="card-title text-center p-2 mx-2  bg-primary text-light">${petJSON.petName}</h4>
+      <img src="${petJSON.imgPath}" class="px-1 m-1" alt="">
+        <div class="card-body text-center">
+          <h2 class="card-title">${petJSON.attitude}</h2>
+          <h3 class="card-text">Type: ${petJSON.type}</h3>
+          <h3 class="card-text">${petJSON.age} years old</h3>
+        </div>
+      </div>
+  </div>`
+
+  return _colCard
+}
 /*
 ******************* Event Listner ***********************
  */
@@ -140,3 +160,15 @@ setPetBtn.addEventListener('click', handleFormSubmit)
 //     })
 //   }
 // }
+
+// <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-7 p-1">
+//     <div class="card p-1 gif-card">
+//         <h4 class="card-title text-center p-2 mx-2  bg-primary text-light">petName</h4>
+//         <img src="http://s3-ap-south-1.amazonaws.com/ashokasite/wp-content/uploads/2019/01/15100932/puppeios.jpg" class="px-1 m-1" alt="">
+//         <div class="card-body text-center">
+//             <h2 class="card-title">Loud</h2>
+//             <h3 class="card-text">3 years old</h3>
+//         </div>
+//     </div>
+// </div>
+// _container.insertAdjacentHTML("beforeend", _question);
