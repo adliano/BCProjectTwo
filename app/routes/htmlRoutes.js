@@ -9,17 +9,34 @@ const path = require('path')
  *
  */
 module.exports = function (app) {
-  // we are in production so let's not remove any old code for now
-  // Load index page
-  // app.get('/', function (req, res) {
-  //   Example.findAll({})
-  //     .then(function (dbExamples) {
-  //       res.render('index', {
-  //         msg: 'Welcome!',
-  //         examples: dbExamples
-  //       })
-  //     })
-  // })
+  // Html route for home (root)
+  app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, '../public/index.html'))
+  })
+
+  // Html route for addPet
+  app.get('/addPet', function (req, res) {
+    res.sendFile(path.join(__dirname, '../public/addPet.html'))
+  })
+
+  // Html route for availablePets
+  app.get('/availablePets', function (req, res) {
+    res.sendFile(path.join(__dirname, '../public/availablePets.html'))
+  })
+
+  // Render 404 page for any unmatched routes
+  app.get('*', function (req, res) {
+    // res.render('404')
+    res.sendFile(path.join(__dirname, '../public/404.html'))
+  })
+}
+/*
+NOTES DROPED because of time to finish project
+
+// Html route for findPet
+  app.get('/findPet', function (req, res) {
+    res.sendFile(path.join(__dirname, '../public/questions.html'))
+  })
 
   // Load example page and pass in an example by id
   app.get('/find/:id', function (req, res) {
@@ -30,22 +47,16 @@ module.exports = function (app) {
         })
       })
   })
-  // Html route for home (root)
-  app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '../public/index.html'))
-  })
-  // Html route for addPet
-  app.get('/addPet', function (req, res) {
-    res.sendFile(path.join(__dirname, '../public/addPet.html'))
-  })
 
-  // Html route for findPet
-  app.get('/findPet', function (req, res) {
-    res.sendFile(path.join(__dirname, '../public/questions.html'))
+  // we are in production so let's not remove any old code for now
+  // Load index page
+  app.get('/', function (req, res) {
+    Example.findAll({})
+      .then(function (dbExamples) {
+        res.render('index', {
+          msg: 'Welcome!',
+          examples: dbExamples
+        })
+      })
   })
-  // Render 404 page for any unmatched routes
-  app.get('*', function (req, res) {
-    // res.render('404')
-    res.sendFile(path.join(__dirname, '../public/404.html'))
-  })
-}
+*/
