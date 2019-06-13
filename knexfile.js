@@ -29,11 +29,11 @@ module.exports = {
   production: {
     client: 'mysql',
     connection: {
-      host: process.env.DATABASE_URL,
+      host: process.env.HOST,
       port: 3306,
-      user: 'nodeUser',
-      password: '',
-      database: 'pets_DB'
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWD,
+      database: process.env.DATABASE
     }
   }
 }
