@@ -3,9 +3,9 @@ console.log('index.js loaded at addPet.html')
 // Get references to page elements
 /* eslint-disable no-undef */
 /* ************ 🌍 Globals 🌏 *************** */
-// TODO: implement this button
-// let getPetBtn = document.querySelector('.getPet')
 let setPetBtn = document.querySelector('.setPet')
+let availablePetsContainer = document.querySelector('#petsContainer')
+// Object with all input elements.
 let dataInputs = {
   getAnimalName: document.querySelector('.getAnimalName'),
   getAnimalAge: document.querySelector('.getAnimalAge'),
@@ -28,10 +28,17 @@ class API {
       body: JSON.stringify(data)
     })
   }
-
-  getExamples () {
-    // TODO: need to do on routes
-    return fetch('api/examples')
+  // This will fetch all pets available on database and display on
+  // availablePets.html
+  getAllPets () {
+    // GET method is Default on fetch
+    return fetch('api/findAll')
+      .then(result => result.json())
+      .then(data => {
+        for (let pet of data) {
+          mkPetCard(pet)
+        }
+      })
   }
   // Thsi will be used to remove a pet from database
   deletePet (id) {
@@ -39,6 +46,29 @@ class API {
       method: 'DELETE'
     })
   }
+}
+/**
+ *
+ * Code used For availablePets.html
+ * This will Create a card and add the card to petContainer
+ *
+ */
+function mkPetCard (petJSON) {
+  // Code for card (Bootstrap)
+  let _colCard =
+  `<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-7 p-1">
+    <div class="card p-1 gif-card">
+      <h4 class="card-title text-center p-2 mx-2  bg-primary text-light">${petJSON.petName}</h4>
+      <img src="${petJSON.imgPath}" class="px-1 m-1" alt="">
+        <div class="card-body text-center">
+          <h2 class="card-title">${petJSON.attitude}</h2>
+          <h3 class="card-text">Type: ${petJSON.type}</h3>
+          <h3 class="card-text">${petJSON.age} years old</h3>
+        </div>
+      </div>
+  </div>`
+  // Insert beforeend
+  availablePetsContainer.insertAdjacentHTML('beforeend', _colCard)
 }
 /*
 ******************* Event Listner ***********************
@@ -62,7 +92,6 @@ let handleFormSubmit = function (event) {
     petName: dataInputs.getAnimalName.value.trim(),
     type: dataInputs.getAnimalType.value.trim(),
     attitude: dataInputs.getanimalAttitude.value.trim(),
-    // isAdopted: false,
     age: dataInputs.getAnimalAge.value.trim(),
     imgPath: imagPath
   }
@@ -85,13 +114,18 @@ let handleFormSubmit = function (event) {
     dataInputs[key].value = ''
   }
 }
+// FIXME: this is logging error on browser console
+let _api = new API()
+_api.getAllPets()
 
 // Add event listeners to the submit and delete buttons
 setPetBtn.addEventListener('click', handleFormSubmit)
-// exampleList.addEventListener('click', handleDeleteBtnClick)
 
 /* eslint-enable no-undef */
-
+//
+//
+//
+//
 // NOTES
 /* ******* OLD CODE ************ */
 // refreshExamples gets new examples from the db and repopulates the list
@@ -140,3 +174,15 @@ setPetBtn.addEventListener('click', handleFormSubmit)
 //     })
 //   }
 // }
+
+// <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-7 p-1">
+//     <div class="card p-1 gif-card">
+//         <h4 class="card-title text-center p-2 mx-2  bg-primary text-light">petName</h4>
+//         <img src="http://s3-ap-south-1.amazonaws.com/ashokasite/wp-content/uploads/2019/01/15100932/puppeios.jpg" class="px-1 m-1" alt="">
+//         <div class="card-body text-center">
+//             <h2 class="card-title">Loud</h2>
+//             <h3 class="card-text">3 years old</h3>
+//         </div>
+//     </div>
+// </div>
+// _container.insertAdjacentHTML("beforeend", _question);
