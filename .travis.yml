@@ -12,7 +12,6 @@ env:
   global:
     - describe
 test:
-  adapter: mysql2
   database: testdb
   username: travis
   encoding: utf8
