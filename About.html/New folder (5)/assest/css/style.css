@@ -1,0 +1,26 @@
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  clear: both;
+}
+#masthead {
+    position:fixed;
+    z-index: 99;
+    width: 100%;
+    margin: 0 0 30px;
+    overflow: auto;
+    color: #fff;
+    background:powderblue;
+    border-bottom: 2px solid #ccc;
+}
+ body { background-color:powderblue;
+         }
+
+ p.ex1 {
+  max-width: 500px;
+  
+}
+#yellow {
+    background-color: yellow;
+}
