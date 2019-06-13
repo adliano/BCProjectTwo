@@ -1,5 +1,5 @@
 // Dependecies
-const Pet = require('../models/pets')
+// const Pet = require('../models/pets')
 const path = require('path')
 
 /**
@@ -30,6 +30,8 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, '../public/404.html'))
   })
 }
+//
+//
 /*
 NOTES DROPED because of time to finish project
 
