@@ -6,6 +6,8 @@ console.log('index.js loaded at addPet.html')
 // TODO: implement this button
 // let getPetBtn = document.querySelector('.getPet')
 let setPetBtn = document.querySelector('.setPet')
+let availablePetsContainer = document.querySelector('#petsContainer')
+
 let dataInputs = {
   getAnimalName: document.querySelector('.getAnimalName'),
   getAnimalAge: document.querySelector('.getAnimalAge'),
@@ -28,10 +30,16 @@ class API {
       body: JSON.stringify(data)
     })
   }
-
-  getExamples () {
-    // TODO: need to do on routes
-    return fetch('api/examples')
+  // TODO:
+  getAllPets () {
+    // GET method is Default on fetch
+    return fetch('api/findAll')
+      .then(result => result.json())
+      .then(data => {
+        for (let pet of data) {
+          mkPetCard(pet)
+        }
+      })
   }
   // Thsi will be used to remove a pet from database
   deletePet (id) {
@@ -42,6 +50,7 @@ class API {
 }
 /**
  *
+ * Code used For availablePets.html
  *
  */
 function mkPetCard (petJSON) {
@@ -58,7 +67,8 @@ function mkPetCard (petJSON) {
       </div>
   </div>`
 
-  return _colCard
+  availablePetsContainer.insertAdjacentHTML('beforeend', _colCard)
+  // return _colCard
 }
 /*
 ******************* Event Listner ***********************
@@ -105,13 +115,16 @@ let handleFormSubmit = function (event) {
     dataInputs[key].value = ''
   }
 }
-
+let _api = new API()
+_api.getAllPets()
 // Add event listeners to the submit and delete buttons
 setPetBtn.addEventListener('click', handleFormSubmit)
-// exampleList.addEventListener('click', handleDeleteBtnClick)
 
 /* eslint-enable no-undef */
-
+//
+//
+//
+//
 // NOTES
 /* ******* OLD CODE ************ */
 // refreshExamples gets new examples from the db and repopulates the list
