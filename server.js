@@ -19,8 +19,8 @@ const PORT = process.env.PORT || 3000
 // const ENV = process.env.NODE_ENV || 'development'
 // /* eslint-enable */
 
-// Set Multer storage
 /*
+ ** Set Multer storage **
 The next thing will be to define a storage location for our files.
 Multer gives the option of storing files to disk, as shown below.
 Here, we set up a directory where all our files will be saved,
@@ -30,12 +30,13 @@ let storage = multer.diskStorage({
   // Set Destination
   // Note: You are responsible for creating the directory when providing destination as a function.
   //  When passing a string, multer will make sure that the directory is created for you.
-  destination: 'public/',
+  destination: 'uploads/',
   // Set File Name
   filename: function (req, file, cb) {
     console.log(file)
     // HERE is where we can decide the name of the file
-    filePath = `${file.fieldname}${Date.now()}.${file.mimetype.split('/')[1]}`
+    // We will name as thepetinder + current time im miliseconds + minetype of original file
+    filePath = `thepetinder${Date.now()}.${file.mimetype.split('/')[1]}`
     cb(null, filePath)
 
     /* output of file
@@ -46,6 +47,9 @@ let storage = multer.diskStorage({
       */
   }
 })
+
+// Init Multer upload storage
+let upload = multer({ storage: storage })
 
 // Middleware
 app.use(express.urlencoded({ extended: false }))
