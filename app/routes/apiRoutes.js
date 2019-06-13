@@ -1,5 +1,43 @@
+// ********************** 🌏 GLOBALS 🌍 ********************** \\
+let filePath = ''
+
 // Dependencies
 const Pet = require('../models/pets')
+
+// require Multer
+const multer = require('multer')
+
+/*
+ ** Set Multer storage **
+The next thing will be to define a storage location for our files.
+Multer gives the option of storing files to disk, as shown below.
+Here, we set up a directory where all our files will be saved,
+and we'll also give the files a new identifier.
+*/
+let storage = multer.diskStorage({
+  // Set Destination
+  // Note: You are responsible for creating the directory when providing destination as a function.
+  //  When passing a string, multer will make sure that the directory is created for you.
+  destination: 'uploads/',
+  // Set File Name
+  filename: function (req, file, cb) {
+    console.log(file)
+    // HERE is where we can decide the name of the file
+    // We will name as thepetinder + current time im miliseconds + minetype of original file
+    filePath = `thepetinder${Date.now()}.${file.mimetype.split('/')[1]}`
+    cb(null, filePath)
+
+    /* output of file
+      { fieldname: 'singleFile',
+        originalname: '<File original name>',
+        encoding: '7bit',
+        mimetype: 'image/jpeg' }
+      */
+  }
+})
+
+// Init Multer upload storage
+let upload = multer({ storage: storage })
 
 /**
  * apiRoutes: This routes file returns data to the client/view
@@ -28,9 +66,24 @@ module.exports = function (app) {
     })
   })
 
-  // Create a new example
-  app.post('/api/create', function (req, res) {
+  // Create a new example ////////// ******* changed ******** \\\\\\
+  app.post('/api/create', upload.single('petPicture'), function (req, res, next) {
     console.log(req.body)
+    // Get the img file (multer)
+    let imgFile = req.file
+    // Check for file
+    if (!imgFile) {
+      console.log('not a file')
+      // Create error
+      let err = new Error('missing or invalid file')
+      // Set ststus code
+      err.httpStatusCode = 400
+      // return the error
+      return next(err)
+    }
+
+    console.log(filePath)
+
     Pet.create(req.body)
       .then(function (dbExample) {
         res.json(dbExample)
