@@ -104,18 +104,17 @@
             <option>Loud</option>
           </select>
         </div>
+        <!-- FIXME: i think this part its done -->
         <!-- img choose -->
-        <form enctype="multipart/form-data" action="/api/create" method="POST">
+        <form enctype="multipart/form-data" action="/addPicture" method="POST">
           <div class="form-group">
             <label for="pictureName">Animal's picture</label>
-            <input name="petPicture" type="file" class="form-control-file getPictName" id="pictureName" accept="image/*">
+            <input name="petPicture" type="file" class="form-control-file" id="pictureName" accept="image/*">
             <!-- ========================= -->
-            <!-- <div class="col text-center my-5"> -->
-              <input type="submit" value="Upload" class="btn btn-primary w-50 my-1 setPet">
-            <!-- </div> -->
-            
+            <!-- <input type="submit" value="Upload" class="btn btn-primary w-25 my-1"> -->
             <!-- ========================= -->
           </div>
+          <input type="submit" value="Upload" class="btn btn-primary w-25 my-1">
         </form>
         <!-- <div class="input-group mb-3">
             <div class="input-group-prepend">

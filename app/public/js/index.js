@@ -69,7 +69,7 @@ function mkPetCard (petJSON) {
   </div>`
 
   console.log(petJSON.imgPath)
-  
+
   // Insert beforeend
   if (availablePetsContainer) {
     availablePetsContainer.insertAdjacentHTML('beforeend', _colCard)
@@ -82,7 +82,7 @@ function mkPetCard (petJSON) {
 // handleFormSubmit is called whenever we submit a new Pet
 // Save the new example to the db and refresh the list
 let handleFormSubmit = function (event) {
-  // event.preventDefault()
+  event.preventDefault()
   let api = new API()
 
   // Suppose Multer are saiving imgs at public/uploads

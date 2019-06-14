@@ -7,6 +7,9 @@ const Pet = require('../models/pets')
 // require Multer
 const multer = require('multer')
 
+// TODO: remove if not in use
+const path = require('path')
+
 /*
  ** Set Multer storage **
 The next thing will be to define a storage location for our files.
@@ -21,12 +24,12 @@ let storage = multer.diskStorage({
   destination: 'app/public/uploads',
   // Set File Name
   filename: function (req, file, cb) {
-    console.log(file)
     // HERE is where we can decide the name of the file
     // We will name as thepetinder + current time im miliseconds + minetype of original file
     filePath = `thepetinder${Date.now()}.${file.mimetype.split('/')[1]}`
     cb(null, filePath)
 
+    // console.log(file)
     /* output of file
       { fieldname: 'singleFile',
         originalname: '<File original name>',
@@ -67,11 +70,13 @@ module.exports = function (app) {
   })
 
   // Create a new example ////////// ******* changed ******** \\\\\\
-  app.post('/api/create', upload.single('petPicture'), function (req, res, next) {
+  app.post('/api/create', function (req, res, next) {
+    console.log('*'.repeat(80))
     console.log(req.body)
+    console.log('*'.repeat(80))
     // Get the img file (multer)
-    let imgFile = req.file
-    console.log(imgFile)
+    // let imgFile = req.file
+    // console.log(imgFile)
     // Check for file
     // if (!imgFile) {
     //   console.log('not a file')
@@ -83,12 +88,19 @@ module.exports = function (app) {
     //   return next(err)
     // }
 
-    console.log(filePath)
+    // console.log(filePath)
 
     Pet.create(req.body)
       .then(function (dbExample) {
         res.json(dbExample)
       })
+  })
+  // FIXME: is that anyway to reflesh the page and save the datas like : name, age, etc
+  // in this case this will send the img url and we will be able to save the url on database
+  // Route to handle img upload
+  app.post('/addPicture', upload.single('petPicture'), function (req, res, next) {
+    // res.sendFile(path.join(__dirname, '../public/addPet.html'))
+    res.json({ img: 'myimgpath' })
   })
 
   // Delete an example by id
