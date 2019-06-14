@@ -105,10 +105,13 @@
           </select>
         </div>
         <!-- img choose -->
-        <form enctype="multipart/form-data">
+        <form enctype="multipart/form-data" action="/api/create" method="POST">
           <div class="form-group">
             <label for="pictureName">Animal's picture</label>
             <input name="petPicture" type="file" class="form-control-file getPictName" id="pictureName" accept="image/*">
+            <!-- ========================= -->
+            <input type="submit" value="Upload">
+            <!-- ========================= -->
           </div>
         </form>
         <!-- <div class="input-group mb-3">
