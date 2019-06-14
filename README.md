@@ -37,7 +37,7 @@
 
 # UI
 
-![Home Page](public/images/homePage.png "Home Page")
-![Add Page](public/images/addPage.png "Add page")
-![Questions Page](public/images/questionsPage.png "Questions Page")
-![About Page](public/images/aboutUsPage.png "About")
+![Home Page](app/public/images/homePage.png "Home Page")
+![Add Page](app/public/images/addPage.png "Add page")
+<!-- ![Questions Page](public/images/questionsPage.png "Questions Page") -->
+<!-- ![About Page](public/images/aboutUsPage.png "About") -->
