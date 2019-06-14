@@ -5,31 +5,33 @@
 require('dotenv').config()
 
 const express = require('express')
-const exphbs = require('express-handlebars')
+// const exphbs = require('express-handlebars')
 
 // const db = require('./models/example') // eslint-disable no-unused-consts
 
 const app = express()
 const PORT = process.env.PORT || 3000
-// const ENV = process.env.NODE_ENV || 'development' //TODO: fix ENV
+// /* eslint-disable */
+// const ENV = process.env.NODE_ENV || 'development'
+// /* eslint-enable */
 
 // Middleware
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-app.use(express.static('public'))
+app.use(express.static('app/public'))
 
 // Handlebars
-app.engine(
-  'handlebars',
-  exphbs({
-    defaultLayout: 'main'
-  })
-)
-app.set('view engine', 'handlebars')
+// app.engine(
+//   'handlebars',
+//   exphbs({
+//     defaultLayout: 'main'
+//   })
+// )
+// app.set('view engine', 'handlebars')
 
 // Routes
-require('./routes/apiRoutes')(app)
-require('./routes/htmlRoutes')(app)
+require('./app/routes/apiRoutes')(app)
+require('./app/routes/htmlRoutes')(app)
 
 // Starting our Express app
 // =============================================================
