@@ -18,7 +18,7 @@ let storage = multer.diskStorage({
   // Set Destination
   // Note: You are responsible for creating the directory when providing destination as a function.
   //  When passing a string, multer will make sure that the directory is created for you.
-  destination: 'uploads/',
+  destination: 'app/public/uploads',
   // Set File Name
   filename: function (req, file, cb) {
     console.log(file)
@@ -70,7 +70,9 @@ module.exports = function (app) {
   app.post('/api/create', upload.single('petPicture'), function (req, res, next) {
     console.log(req.body)
     // Get the img file (multer)
-    let imgFile = req.file
+    let imgFile = req.file.image
+    console.log(imgFile)
+    
     // Check for file
     if (!imgFile) {
       console.log('not a file')
