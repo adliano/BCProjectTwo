@@ -59,7 +59,7 @@ function mkPetCard (petJSON) {
   `<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-7 p-1">
     <div class="card p-1 gif-card">
       <h4 class="card-title text-center p-2 mx-2  bg-primary text-light">${petJSON.petName}</h4>
-      <img src="${petJSON.imgPath}" class="px-1 m-1" alt="">
+      <img src="${window.location.hostname}${petJSON.imgPath}" class="px-1 m-1" alt="">
         <div class="card-body text-center">
           <h2 class="card-title">${petJSON.attitude}</h2>
           <h3 class="card-text">Type: ${petJSON.type}</h3>
@@ -67,6 +67,9 @@ function mkPetCard (petJSON) {
         </div>
       </div>
   </div>`
+
+  console.log(petJSON.imgPath)
+  
   // Insert beforeend
   if (availablePetsContainer) {
     availablePetsContainer.insertAdjacentHTML('beforeend', _colCard)
@@ -79,17 +82,14 @@ function mkPetCard (petJSON) {
 // handleFormSubmit is called whenever we submit a new Pet
 // Save the new example to the db and refresh the list
 let handleFormSubmit = function (event) {
-  event.preventDefault()
+  // event.preventDefault()
   let api = new API()
 
-  // FIXME: Suppose Multer are saiving imgs at public/uploads
+  // Suppose Multer are saiving imgs at public/uploads
   // Generate file path base on Express/Multer settings for static route
   // let imagPath = `/uploads/${getPictName.value.split('\\')[2]}`
   let imagPath = `/uploads/${dataInputs.getPictName.value.split('\\')[2]}`
 
-  // TODO: Get the pet infoS
-  // FIXME: isAdopted
-  // TODO: Karina its working on Multer
   let petToAdd = {
     petName: dataInputs.getAnimalName.value.trim(),
     type: dataInputs.getAnimalType.value.trim(),
@@ -116,7 +116,7 @@ let handleFormSubmit = function (event) {
     dataInputs[key].value = ''
   }
 }
-// FIXME: this is logging error on browser console
+
 let _api = new API()
 _api.getAllPets()
 

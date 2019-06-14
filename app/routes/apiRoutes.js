@@ -70,19 +70,18 @@ module.exports = function (app) {
   app.post('/api/create', upload.single('petPicture'), function (req, res, next) {
     console.log(req.body)
     // Get the img file (multer)
-    let imgFile = req.file.image
+    let imgFile = req.file
     console.log(imgFile)
-    
     // Check for file
-    if (!imgFile) {
-      console.log('not a file')
-      // Create error
-      let err = new Error('missing or invalid file')
-      // Set ststus code
-      err.httpStatusCode = 400
-      // return the error
-      return next(err)
-    }
+    // if (!imgFile) {
+    //   console.log('not a file')
+    //   // Create error
+    //   let err = new Error('missing or invalid file')
+    //   // Set ststus code
+    //   err.httpStatusCode = 400
+    //   // return the error
+    //   return next(err)
+    // }
 
     console.log(filePath)
 
