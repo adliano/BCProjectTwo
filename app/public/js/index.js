@@ -68,7 +68,9 @@ function mkPetCard (petJSON) {
       </div>
   </div>`
   // Insert beforeend
-  availablePetsContainer.insertAdjacentHTML('beforeend', _colCard)
+  if (availablePetsContainer) {
+    availablePetsContainer.insertAdjacentHTML('beforeend', _colCard)
+  }
 }
 /*
 ******************* Event Listner ***********************
@@ -119,7 +121,9 @@ let _api = new API()
 _api.getAllPets()
 
 // Add event listeners to the submit and delete buttons
-setPetBtn.addEventListener('click', handleFormSubmit)
+if (setPetBtn) {
+  setPetBtn.addEventListener('click', handleFormSubmit)
+}
 
 /* eslint-enable no-undef */
 //
