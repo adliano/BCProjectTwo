@@ -111,24 +111,24 @@
               <input type="file" name="profilepic" class="custom-file-input" id="validatedCustomFile" required>
               <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
               <p class="red">
-                  Error messages will go here
+                <%= typeof message == 'undefined'? '' : message %>
               </p>
           </div>
           <br />
           <button type="submit" class="btn btn-primary gap">Submit</button>
-          <img src="https://images.pexels.com/photos/1144256/pexels-photo-1144256.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" class="ig-responsive">
+          <img class="card-img-top" src="<%= typeof filename == 'undefined'? 'https://images.pexels.com/photos/1144256/pexels-photo-1144256.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350' : filename %>"
       </form>
       
         <!-- <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text">Age</span>
+              <span class="input-group-text">Age</span>app\public\uploads\thepetinder1560547241546.jpeg
             </div>
             <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"/>
           </div> -->
         <!-- //////////////////////////////// -->
       </div>
     </div>
-    <!-- end of forms --app\public\uploads\thepetinder1560547241546.jpeg>
+    <!-- end of forms -->
 
     <!-- Buttons row -->
     <div class="row my-5">
