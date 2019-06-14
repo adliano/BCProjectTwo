@@ -3,7 +3,7 @@ let filePath = ''
 
 // Dependencies
 
-const express = require ('express')
+const express = require('express')
 
 const Pet = require('../models/pets')
 
@@ -15,7 +15,7 @@ const path = require('path')
 
 const ejs = require('ejs')
 
-const app = express();
+const app = express()
 
 /*
  ** Set Multer storage **
@@ -105,67 +105,14 @@ module.exports = function (app) {
   // FIXME: is that anyway to reflesh the page and save the datas like : name, age, etc
   // in this case this will send the img url and we will be able to save the url on database
   // Route to handle img upload
-  var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'app/public/uploads');
 
-      console.log('at line 17');
-      console.log(file)
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
-    // cb(null, file.fieldname + '-' + Date.now() + path.extname("testName"))
+  app.post('/addPicture', upload.single('petPicture'), function (req, res, next) {
+    // res.sendFile(path.join(__dirname, '../public/addPet.html'))
+    console.log(req.body)
+    console.log(req.file.path)
 
-}
-  });
-   
-  var upload = multer({
-       storage: storage 
-    
-    }).single('profilepic');
-
-
-
-
-// set for ejs
-
-// EJS is a simple templating language that lets you generate HTML markup with plain JavaScript. 
-// No religiousness about how to organize things. No reinvention of iteration and control-flow.
-
-app.set('view engine', 'ejs');
-
-// set static folder
-
-app.use(express.static('./public'));
-
-
-
-app.get('/' , (req, res) => {
-    res.render('addPet');
-});
-
-// Description for routers
-
-app.post('/upload', (req, res) =>{
-    upload(req, res, (error) => {
-        if (error){
-            res.render('addPet', {
-                message: error
-            })
-        } else {
-            res.render('addPet', {
-                message: 'Sucessfully uploaded',
-                filename: `myupload/${req.file.filename}`
-            });
-
-
-        }
-
-    });
-});
-
-
-
+    res.json({ data: req.body, img: req.file.path })
+  })
   // Delete an example by id
   app.delete('/api/delete/:id', function (req, res) {
     Pet.destroy(req.params)
