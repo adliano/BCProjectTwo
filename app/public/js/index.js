@@ -59,7 +59,7 @@ function mkPetCard (petJSON) {
   `<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-7 p-1">
     <div class="card p-1 gif-card">
       <h4 class="card-title text-center p-2 mx-2  bg-primary text-light">${petJSON.petName}</h4>
-      <img src="${window.location.hostname}${petJSON.imgPath}" class="px-1 m-1" alt="">
+      <img src="${petJSON.imgPath}" class="px-1 mx-auto" alt="" height="150" width="150">
         <div class="card-body text-center">
           <h2 class="card-title">${petJSON.attitude}</h2>
           <h3 class="card-text">Type: ${petJSON.type}</h3>

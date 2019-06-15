@@ -26,6 +26,7 @@ let storage = multer.diskStorage({
   filename: function (req, file, cb) {
     // HERE is where we can decide the name of the file
     // We will name as thepetinder + current time im miliseconds + minetype of original file
+    // TODO: change this file extetion
     filePath = `thepetinder${Date.now()}.${file.mimetype.split('/')[1]}`
     cb(null, filePath)
 
@@ -70,38 +71,31 @@ module.exports = function (app) {
   })
 
   // Create a new example ////////// ******* changed ******** \\\\\\
-  app.post('/api/create', function (req, res, next) {
-    console.log('*'.repeat(80))
+  app.post('/api/create', upload.single('imgPath'), function (req, res, next) {
+    req.body.imgPath = `http://${req.get('host')}/uploads/${req.file.filename}`
     console.log(req.body)
-    console.log('*'.repeat(80))
-    // Get the img file (multer)
-    // let imgFile = req.file
-    // console.log(imgFile)
-    // Check for file
-    // if (!imgFile) {
-    //   console.log('not a file')
-    //   // Create error
-    //   let err = new Error('missing or invalid file')
-    //   // Set ststus code
-    //   err.httpStatusCode = 400
-    //   // return the error
-    //   return next(err)
-    // }
 
-    // console.log(filePath)
+    // console.log(req.get('host'))
+
+    // console.log(req.file)
 
     Pet.create(req.body)
       .then(function (dbExample) {
         res.json(dbExample)
       })
+    res.redirect('/addPet')
   })
   // FIXME: is that anyway to reflesh the page and save the datas like : name, age, etc
   // in this case this will send the img url and we will be able to save the url on database
   // Route to handle img upload
-  app.post('/addPicture', upload.single('petPicture'), function (req, res, next) {
-    // res.sendFile(path.join(__dirname, '../public/addPet.html'))
-    res.json({ img: 'myimgpath' })
-  })
+  // app.post('/addPicture', upload.single('petPicture'), function (req, res, next) {
+  //   // res.sendFile(path.join(__dirname, '../public/addPet.html'))
+  //   console.log(req.body)
+  //   console.log(req.file)
+
+  //   // res.json({ img: 'myimgpath' })
+  //   res.sendFile(path.join(__dirname, '../public/addPet.html'))
+  // })
 
   // Delete an example by id
   app.delete('/api/delete/:id', function (req, res) {
@@ -123,3 +117,19 @@ module.exports = function (app) {
       })
   })
 }
+
+/*
+[Object: null prototype] {
+  animalName: '2wsx',
+  animalAge: '9876',
+  animalType: 'Lion',
+  animalAttitude: 'Playful' }
+{ fieldname: 'petPicture',
+  originalname: '20170526_191602.jpg',
+  encoding: '7bit',
+  mimetype: 'image/jpeg',
+  destination: 'app/public/uploads',
+  filename: 'thepetinder1560556105221.jpeg',
+  path: 'app/public/uploads/thepetinder1560556105221.jpeg',
+  size: 601159 }
+*/

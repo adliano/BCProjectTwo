@@ -66,25 +66,28 @@
       </div>
       <div class="card-body">
         <!-- //////////////////////////////// TODO:-->
+        <!-- Make sure to all name='' attributes match with the fields on database -->
+        <!-- <form enctype="multipart/form-data" action="/addPicture" method="POST"> -->
+        <form enctype="multipart/form-data" action="/api/create" method="POST">
         <!-- get pet name -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text">Name</span>
           </div>
-          <input type="text" class="form-control getAnimalName" aria-label="Animal's Name" />
+          <input type="text" name="petName" class="form-control getAnimalName" aria-label="Animal's Name" />
         </div>
         <!-- get pet age -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text px-4">Age</span>
           </div>
-          <input type="text" class="form-control getAnimalAge" aria-label="Animal's Age" />
+          <input type="text" name="age" class="form-control getAnimalAge" aria-label="Animal's Age" />
         </div>
 
         <!-- questions -->
         <div class="form-group">
           <label for="petType">Animal Type:</label>
-          <select class="form-control getAnimalType" id="petType">
+          <select class="form-control getAnimalType" id="petType" name="type">
             <option value="" selected="selected" hidden="hidden">Select an Option</option>
             <option>Dog</option>
             <option>Cat</option>
@@ -96,7 +99,7 @@
         </div>
         <div class="form-group">
           <label for="animalAttitude">Animal Attitude:</label>
-          <select class="form-control getanimalAttitude" id="animalAttitude">
+          <select class="form-control getanimalAttitude" id="animalAttitude" name="attitude">
             <option value="" selected="selected" hidden="hidden">Select an Option</option>
             <option>Frisky</option>
             <option>Shy</option>
@@ -106,10 +109,11 @@
         </div>
         <!-- FIXME: i think this part its done -->
         <!-- img choose -->
-        <form enctype="multipart/form-data" action="/addPicture" method="POST">
+        <!-- <form enctype="multipart/form-data" action="/addPicture" method="POST"> ******* changed ******* -->
           <div class="form-group">
             <label for="pictureName">Animal's picture</label>
-            <input name="petPicture" type="file" class="form-control-file" id="pictureName" accept="image/*">
+            <!-- Set the name attribute to same name of the field in the database -->
+            <input name="imgPath" type="file" class="form-control-file" id="pictureName" accept="image/*">
             <!-- ========================= -->
             <!-- <input type="submit" value="Upload" class="btn btn-primary w-25 my-1"> -->
             <!-- ========================= -->
@@ -128,14 +132,14 @@
     <!-- end of forms -->
 
     <!-- Buttons row -->
-    <div class="row my-5">
+    <!-- <div class="row my-5">
       <div class="col text-center my-2">
         <button type="button" class="btn btn-primary w-50 my-1 setPet">
           Submit
         </button>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- :: End of container ::-->
   <!-- -------- Footer -------- -->
   <footer class="page-footer font-small blue fixed-bottom bg-light">
