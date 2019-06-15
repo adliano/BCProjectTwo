@@ -2,14 +2,15 @@
 // SERVER.JS - THIS FILE INITIATES YOUR ENTIRE APPLICATION. IT"S YOUR APP FOUNDATION!
 // *********************************************************************************
 
+// Require dotenv
 require('dotenv').config()
-
+// Express server
 const express = require('express')
 // const exphbs = require('express-handlebars')
-
 // const db = require('./models/example') // eslint-disable no-unused-consts
-
+// Init Express app
 const app = express()
+// Set the Port
 const PORT = process.env.PORT || 3000
 // /* eslint-disable */
 // const ENV = process.env.NODE_ENV || 'development'

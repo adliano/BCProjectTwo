@@ -43,12 +43,12 @@
     </div><!-- END OF COLLAPSE -->
   </nav>
   <!-- ------- Container ------ -->
-  <div class="container pt-4">
+  <div class="container pt-4 mb-5">
     <!-- img row -->
     <div class="row mt-3">
       <div class="mx-auto">
         <!-- Image -->
-        <img src="./images/ki85j78eT.png" alt="Placeholder" width="350px" />
+        <img src="./images/ki85j78eT.png" alt="Pets Image" width="350px" />
       </div>
     </div>
     <!-- Text row -->
@@ -65,93 +65,80 @@
         <h3 class="p-1"><img src="./images/feather_identify.svg" alt="add"> Add Pet</h3>
       </div>
       <div class="card-body">
-        <!-- //////////////////////////////// TODO:-->
-        <!-- get pet name -->
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Name</span>
+        <!-- *********************** NOTE ****************** -->
+        <!-- Make sure to all name='' attributes match with the fields on database -->
+        <form enctype="multipart/form-data" action="/api/create" method="POST">
+          <!-- Get Animal Name -->
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Name</span>
+            </div>
+            <input type="text" name="petName" class="form-control getAnimalName" aria-label="Animal's Name" />
           </div>
-          <input type="text" class="form-control getAnimalName" aria-label="Animal's Name" />
-        </div>
-        <!-- get pet age -->
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text px-4">Age</span>
+          <!-- Get Animal Age -->
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text px-4">Age</span>
+            </div>
+            <input type="text" name="age" class="form-control getAnimalAge" aria-label="Animal's Age" />
           </div>
-          <input type="text" class="form-control getAnimalAge" aria-label="Animal's Age" />
-        </div>
-
-        <!-- questions -->
-        <div class="form-group">
-          <label for="petType">Animal Type:</label>
-          <select class="form-control getAnimalType" id="petType">
-            <option value="" selected="selected" hidden="hidden">Select an Option</option>
-            <option>Dog</option>
-            <option>Cat</option>
-            <option>Lion</option>
-            <option>Pig</option>
-            <option>Bird</option>
-            <option>Horse</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="animalAttitude">Animal Attitude:</label>
-          <select class="form-control getanimalAttitude" id="animalAttitude">
-            <option value="" selected="selected" hidden="hidden">Select an Option</option>
-            <option>Frisky</option>
-            <option>Shy</option>
-            <option>Playful</option>
-            <option>Loud</option>
-          </select>
-        </div>
-        <!-- img choose -->
-        <form>
+          <!-- Select Animal Type -->
+          <div class="form-group">
+            <label for="petType">Animal Type:</label>
+            <select class="form-control getAnimalType" id="petType" name="type">
+              <option value="" selected="selected" hidden="hidden">Select an Option</option>
+              <option>Dog</option>
+              <option>Cat</option>
+              <option>Lion</option>
+              <option>Pig</option>
+              <option>Bird</option>
+              <option>Horse</option>
+            </select>
+          </div>
+          <!-- Select Animal Attitude -->
+          <div class="form-group">
+            <label for="animalAttitude">Animal Attitude:</label>
+            <select class="form-control getanimalAttitude" id="animalAttitude" name="attitude">
+              <option value="" selected="selected" hidden="hidden">Select an Option</option>
+              <option>Frisky</option>
+              <option>Shy</option>
+              <option>Playful</option>
+              <option>Loud</option>
+            </select>
+          </div>
+          <!-- img upload -->
           <div class="form-group">
             <label for="pictureName">Animal's picture</label>
-            <input type="file" class="form-control-file getPictName" id="pictureName" accept="image/*">
+            <!-- Set the name attribute to same name of the field in the database -->
+            <input name="imgPath" type="file" class="form-control-file" id="pictureName" accept="image/*">
           </div>
+          <!-- Upload Button -->
+          <input type="submit" value="Upload" class="btn btn-primary w-25 my-3">
         </form>
-        <!-- <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Age</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"/>
-          </div> -->
-        <!-- //////////////////////////////// -->
       </div>
     </div>
     <!-- end of forms -->
-
-    <!-- Buttons row -->
-    <div class="row my-5">
-      <div class="col text-center my-2">
-        <button type="button" class="btn btn-primary w-50 my-1 setPet">
-          Submit
-        </button>
+    <!-- :: End of container ::-->
+    <!-- -------- Footer -------- -->
+    <footer class="page-footer font-small blue fixed-bottom bg-light">
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-2">
+        <a href="https://github.com/adliano/BCProjectTwo" target="_blank">
+          <img src="./images/github.svg" width="25px" alt="">
+        </a>
       </div>
-    </div>
-  </div>
-  <!-- :: End of container ::-->
-  <!-- -------- Footer -------- -->
-  <footer class="page-footer font-small blue fixed-bottom bg-light">
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-2">
-      <a href="https://github.com/adliano/BCProjectTwo" target="_blank">
-        <img src="./images/github.svg" width="25px" alt="">
-      </a>
-    </div>
-    <!-- :: End of Copyright :: -->
-  </footer>
-  <!-- :: End of Footer :: -->
+      <!-- :: End of Copyright :: -->
+    </footer>
+    <!-- :: End of Footer :: -->
 
-  <!-- ***************************************** -->
-  <!-- ********** Optional JavaScript ********** -->
-  <!-- ***************************************** -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="./js/index.js"></script>
+    <!-- ***************************************** -->
+    <!-- ********** Optional JavaScript ********** -->
+    <!-- ***************************************** -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="./js/index.js"></script>
 </body>
 
 </html>

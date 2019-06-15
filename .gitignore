@@ -3,3 +3,5 @@ node_modules
 npm-debug.log
 .env
 ./githooks.txt
+.notes.txt
+app/public/uploads
