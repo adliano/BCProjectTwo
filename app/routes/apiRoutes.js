@@ -26,8 +26,9 @@ let storage = multer.diskStorage({
   filename: function (req, file, cb) {
     // HERE is where we can decide the name of the file
     // We will name as thepetinder + current time im miliseconds + minetype of original file
-    // TODO: change this file extetion
-    filePath = `thepetinder${Date.now()}.${file.mimetype.split('/')[1]}`
+    // filePath = `thepetinder${Date.now()}.${file.mimetype.split('/')[1]}`
+    filePath = `thepetinder${Date.now()}.${path.extname(file.originalname)}`
+
     cb(null, filePath)
 
     // console.log(file)
@@ -49,7 +50,6 @@ let upload = multer({ storage: storage })
  * where the htmlRoutes.js responds with a handlebars page
  *
  */
-
 module.exports = function (app) {
   // Get all examples
   app.get('/api/findAll', function (req, res) {
@@ -73,11 +73,8 @@ module.exports = function (app) {
   // Create a new example ////////// ******* changed ******** \\\\\\
   app.post('/api/create', upload.single('imgPath'), function (req, res, next) {
     req.body.imgPath = `http://${req.get('host')}/uploads/${req.file.filename}`
-    console.log(req.body)
 
-    // console.log(req.get('host'))
-
-    // console.log(req.file)
+    // console.log(req.body)
 
     Pet.create(req.body)
       .then(function (dbExample) {
@@ -85,18 +82,6 @@ module.exports = function (app) {
       })
     res.redirect('/addPet')
   })
-  // FIXME: is that anyway to reflesh the page and save the datas like : name, age, etc
-  // in this case this will send the img url and we will be able to save the url on database
-  // Route to handle img upload
-  // app.post('/addPicture', upload.single('petPicture'), function (req, res, next) {
-  //   // res.sendFile(path.join(__dirname, '../public/addPet.html'))
-  //   console.log(req.body)
-  //   console.log(req.file)
-
-  //   // res.json({ img: 'myimgpath' })
-  //   res.sendFile(path.join(__dirname, '../public/addPet.html'))
-  // })
-
   // Delete an example by id
   app.delete('/api/delete/:id', function (req, res) {
     Pet.destroy(req.params)
