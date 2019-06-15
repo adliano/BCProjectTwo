@@ -20,6 +20,8 @@
 
 ### Authors:
 
+![Us](app/public/images/aboutus.jpg "Authors")
+
 - [Adriano Alves](https://github.com/adliano)
 - [Jose Menis](https://github.com/josemenis)
 - [Karina Lowell](https://github.com/karilowell)

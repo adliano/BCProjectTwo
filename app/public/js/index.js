@@ -58,10 +58,10 @@ class API {
 function mkPetCard (petJSON) {
   // Code for card (Bootstrap)
   let _colCard =
-  `<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-7 p-1">
-    <div class="card p-1 gif-card">
+  `<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 p-1">
+    <div class="card p-1 gif-card h-100">
       <h4 class="card-title text-center p-2 mx-2 bg-primary text-light">${petJSON.petName}</h4>
-      <img src="${petJSON.imgPath}" class="px-1 mx-auto mt-2" alt="" height="150" width="150">
+      <img src="${petJSON.imgPath}" class="px-1 mx-auto mt-2 w-100 h-auto" alt="">
         <div class="card-body text-center">
           <h2 class="card-title">${petJSON.attitude}</h2>
           <h3 class="card-text">Type: ${petJSON.type}</h3>
