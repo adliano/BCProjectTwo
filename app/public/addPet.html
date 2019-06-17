@@ -111,24 +111,13 @@
           <!-- img upload -->
           <div class="form-group">
             <label for="pictureName">Animal's picture</label>
-            <div class="m-4">
-                <img id="imgPreview" class="invisible w-25" src="./images/upload.svg">
+            <div class="m-3">
+              <img id="imgPreview" class="invisible w-25" src="./images/upload.svg">
             </div>
-            <!-- FIXME: -->
-            <!-- Set the name attribute to same name of the field in the database -->
-            <!-- <input name="imgPath" type="file" class="form-control-file" id="pictureName" accept="image/*"
-            onchange="document.getElementById('imgPreview').src = window.URL.createObjectURL(this.files[0])"> -->
-            
             <input name="imgPath" type="file" class="form-control-file" id="pictureName" accept="image/*">
-            
-            
           </div>
           <!-- Upload Button -->
           <input type="submit" value="Upload" class="btn btn-primary w-25 my-3">
-
-          <!-- <img id="blah" alt="your image" width="100" height="100" /> -->
-
-          <!-- <input type="file" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])"> -->
         </form>
       </div>
     </div>
