@@ -9,3 +9,7 @@ p {
 .quote {
     font-family: 'Lora', serif;
 }
+
+.invisible {
+    display: none;
+}

@@ -78,6 +78,22 @@ function mkPetCard (petJSON) {
   }
 }
 
+// Set the change event listner on input file
+// This will set the img preview after user selects a img
+let pictureSelect = document.querySelector('#pictureName')
+// Check if element its availabe on document
+if (pictureSelect) {
+  // Add change event listner
+  pictureSelect.addEventListener('change', function () {
+    // Get <img> element used to display preview
+    let preview = document.querySelector('#imgPreview')
+    // Set src attribute to <img> by creating the img url
+    preview.src = window.URL.createObjectURL(this.files[0])
+    // Mk <img> visible by removing invisible class
+    preview.classList.remove('invisible')
+  })
+}
+
 let _api = new API()
 _api.getAllPets()
 

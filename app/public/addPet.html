@@ -56,7 +56,7 @@
     <!-- Text row -->
     <div class="row mt-3">
       <div class="mx-auto text-center mx-3">
-          <h1>Animals and Universal Consciouness</h1>
+        <h1>Animals and Universal Consciouness</h1>
       </div>
     </div>
     <!-- --------------------- -->
@@ -111,11 +111,15 @@
           <!-- img upload -->
           <div class="form-group">
             <label for="pictureName">Animal's picture</label>
-            <!-- Set the name attribute to same name of the field in the database -->
+            <div class="m-3">
+              <img id="imgPreview" class="invisible w-25" src="./images/upload.svg">
+            </div>
             <input name="imgPath" type="file" class="form-control-file" id="pictureName" accept="image/*">
           </div>
           <!-- Upload Button -->
-          <input type="submit" value="Upload" class="btn btn-primary w-25 my-3">
+          <button type="submit" value="Upload" class="btn btn-primary w-25 my-3"><img class="mx-1" src="./images/upload.svg"> Upload</button>
+          <!-- <input type="submit" value="Upload" class="btn btn-primary w-25 my-3"> -->
+          
         </form>
       </div>
     </div>
